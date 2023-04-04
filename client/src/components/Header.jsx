@@ -10,9 +10,10 @@ const Header = () => {
                     <Logo> Water Cooling Guide</Logo>
                     <NavItems>
                         <ul>
-                            <li><a href="">Introduction</a></li>
-                            <li><a href="">Getting Started</a></li>
-                            <li><a href="">FAQ</a></li>
+                            <li><a href="#landing">Introduction</a></li>
+                            <li><a href="#get-started">Getting Started</a></li>
+                            <li><a href="#install">Installation</a></li>
+                            <li><a href="#faq">FAQ</a></li>
                         </ul>
                     </NavItems>
                 </HeaderNavInner>

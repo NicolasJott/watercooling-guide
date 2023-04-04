@@ -6,7 +6,9 @@ export const HeaderContainer = styled.header`
   width: 100%;
   position: fixed;
   justify-content: center;
-  align-items: center;
+  top: 0;
+  right: 0;
+  left: 0;
 `
 
 export const HeaderNav = styled.nav`
