@@ -56,7 +56,7 @@ const Header = ({ isHome }) => {
                 <HeaderNavInner>
                     <TransitionGroup component={null}>
                         {isMounted && (
-                        <CSSTransition classNames={fadeClass} timeout={10}>
+                        <CSSTransition classNames={fadeClass} timeout={timeout}>
                             {logo}
                         </CSSTransition>
                             )}

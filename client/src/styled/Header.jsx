@@ -25,7 +25,7 @@ export const HeaderContainer = styled.header`
 
 export const HeaderNav = styled.nav`
   display: flex;
-  background-color: #464646;
+  background-color: var(--navbar-outer);
   border-radius: 1rem;
   height: 80px;
   width: 1200px;
@@ -37,7 +37,7 @@ export const HeaderNav = styled.nav`
 export const HeaderNavInner = styled.div`
   height: 100%;
   width: 100%;
-  background-color: #262626;
+  background-color: var(--navbar-inner);
   border-radius: 0.8rem;
   display: flex;
   align-items: center;

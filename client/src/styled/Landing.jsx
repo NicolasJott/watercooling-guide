@@ -39,7 +39,7 @@ export const LandingHeaderItem = styled.div`
   }
 
   span {
-    color: papayawhip;
+    color: var(--light-yellow-1);
     font-weight: 700;
   }
   
@@ -54,7 +54,7 @@ export const LandingHeaderItem = styled.div`
   }
   
   li {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-size: 24px;
   }
 `
