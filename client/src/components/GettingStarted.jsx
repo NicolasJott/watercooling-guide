@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {LandingHeaderItem, LandingDiv, LandingHeader, LandingSection, Main} from "../styled/Landing";
+import sr from "../utils/ScrollReveal";
+import {srConfig} from "../config";
 
 const GettingStarted = () => {
+    const revealContainer = useRef(null)
+
+    useEffect(() => {
+        sr.reveal(revealContainer.current, srConfig())
+    }, [])
 
     return(
-            <LandingSection id="get-started">
+            <LandingSection id="get-started" ref={revealContainer}>
                 <LandingDiv>
                     <LandingHeader>
                         <h1>Getting Started</h1>

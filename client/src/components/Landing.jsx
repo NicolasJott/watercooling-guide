@@ -1,12 +1,20 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {LandingHeaderItem, LandingDiv, LandingHeader, LandingSection, Main} from "../styled/Landing";
+import sr from "../utils/ScrollReveal";
+import { srConfig } from "../config";
 
 const Landing = () => {
+    const revealContainer = useRef(null)
+
+    useEffect(() => {
+        sr.reveal(revealContainer.current, srConfig())
+    }, [])
 
     return(
-            <LandingSection id="landing">
+            <LandingSection id="landing" ref={revealContainer}>
                 <LandingDiv>
                     <LandingHeader>
+                        <h1>Introduction</h1>
                         <LandingHeaderItem>
                             <h2>What Is Custom Water Cooling?</h2>
                             <p>Custom water cooling is a method of cooling computer components, such as CPUs and GPUs,

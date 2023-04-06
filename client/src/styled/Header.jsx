@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header`
   margin-top: 5px;
@@ -9,6 +9,18 @@ export const HeaderContainer = styled.header`
   top: 0;
   right: 0;
   left: 0;
+  z-index: 9;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  ${props =>
+          props.scrollDirection === 'down' &&
+          !props.scrolledToTop &&
+          css`
+        height: 80px;
+        transform: translateY(calc(-85px));
+        box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+      `};
+}
 `
 
 export const HeaderNav = styled.nav`
@@ -33,8 +45,13 @@ export const HeaderNavInner = styled.div`
 `
 
 export const Logo = styled.div`
-  font-size: 1.5rem;
-  color: white;
+  
+  a {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    
+  }
   display: flex;
   margin-left: 20px;
 

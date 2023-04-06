@@ -8,17 +8,16 @@ export const Main = styled.main`
   padding: 200px 50px;
 `
 export const LandingSection = styled.section`
-  margin: 0;
+  margin-top: 200px;
   max-width: 1000px;
-  height: 1200px;
+  max-height: 1200px;
 `
 
 export const LandingDiv = styled.div`
+  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 100vh;
-  height: 70vh;
   padding: 0;
 `
 
