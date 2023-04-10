@@ -30,8 +30,6 @@ const Header = ({ isHome }) => {
         }
     }, [])
 
-    console.log(isMounted)
-
     const timeout = isHome ? loaderDelay : 0;
     const fadeClass = isHome ? 'fade' : '';
     const fadeDownClass = isHome ? 'fadedown' : '';

@@ -10,13 +10,13 @@ module.exports = {
             url:'/#get-started',
         },
         {
+            name: 'FAQ',
+            url:'/#faq',
+        },
+        {
             name: 'Installation',
             url:'/#install',
         },
-        {
-            name: 'FAQ',
-            url:'/#faq',
-        }
     ],
 
     landingItems: [
@@ -61,6 +61,46 @@ module.exports = {
         {
             title: "Coolant:",
             body: "The coolant is the liquid that transfers heat from the components to the radiator. When choosing a coolant, make sure it is compatible with your components and does not contain any harmful additives that could damage your loop. You'll also want to consider the color and UV-reactivity of the coolant, as well as its performance and cost."
+        },
+
+    ],
+
+    faqItems: [
+        {
+            question: "What are the benefits of custom water-cooling over air cooling?",
+            answer: "Custom water-cooling typically provides better cooling performance, lower noise levels, and greater flexibility in terms of design and customization.",
+        },
+        {
+            question: "How does custom water-cooling work?",
+            answer: "Custom water-cooling uses a series of interconnected components, including a pump, reservoir, radiator, and tubing, to circulate liquid through the system and dissipate heat from the computer's components.",
+        },
+        {
+            question: "What components can be water-cooled?",
+            answer: "Any component that generates significant amounts of heat, such as the CPU, GPU, and VRMs, can be water-cooled.",
+        },
+        {
+            question: "Is custom water-cooling difficult to install?",
+            answer: "Installing custom water-cooling can be a complex and time-consuming process, especially for those who are not familiar with the components and installation process.",
+        },
+        {
+            question: "Can I build my own custom water-cooling system?",
+            answer: "Yes, many PC enthusiasts build their own custom water-cooling systems, although it requires knowledge of the components and installation process.",
+        },
+        {
+            question: "What components do I need to build a custom water-cooling system?",
+            answer: "To build a custom water-cooling system, you will need a water block for each component you want to cool, a pump, a reservoir, a radiator, tubing, and fittings.",
+        },
+        {
+            question: "How much does a custom water-cooling system cost?",
+            answer: "The cost of a custom water-cooling system can vary widely depending on the components chosen, but it can range from several hundred to several thousand dollars.",
+        },
+        {
+            question: "What maintenance is required for a custom water-cooling system?",
+            answer: "Custom water-cooling systems require regular maintenance, such as checking coolant levels, cleaning the components, and replacing any worn or damaged parts.",
+        },
+        {
+            question: "Is custom water-cooling safe for my PC?",
+            answer: "Custom water-cooling is generally safe for PCs as long as it is installed correctly and maintained properly. However, any liquid cooling system can pose a risk of leaks or damage if not installed and maintained correctly.",
         },
 
     ],

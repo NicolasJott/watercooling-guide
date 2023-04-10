@@ -1,11 +1,19 @@
 import './App.css';
 
+import { useLocation } from 'react-router-dom';
+
+
 // Components
 import Header from "./components/Header";
 import Landing from "./components/Landing";
-import {Main} from "./styled/Landing";
 import GettingStarted from "./components/GettingStarted";
-import { useLocation } from 'react-router-dom';
+import Installation from "./components/Installation";
+import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
+
+
+import {Main} from "./styled/Landing";
+
 
 function App() {
 
@@ -17,8 +25,11 @@ function App() {
             <Header isHome={isHome}/>
             <Main>
                 <Landing/>
+                <FAQ/>
                 <GettingStarted/>
+                <Installation/>
             </Main>
+            <Footer/>
         </div>
     );
 }
