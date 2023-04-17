@@ -1,9 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
-import {LandingHeaderItem, LandingDiv, LandingHeader, LandingSection} from "../styled/Landing";
+import {LandingHeaderItem, LandingDiv, LandingHeader} from "../styled/Landing";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import sr from "../utils/ScrollReveal";
 import {srConfig, gettingStartedItems} from "../config";
 import {navDelay} from "../utils";
+import {GettingStartedHeaderItem, GettingStartedSection, ImagesDiv} from "../styled/GettingStarted";
 
 const GettingStarted = () => {
     const revealContainer = useRef(null)
@@ -26,7 +27,7 @@ const GettingStarted = () => {
     const fadeUp = 'fadeup'
 
     return(
-            <LandingSection id="get-started" >
+            <GettingStartedSection id="get-started" >
                 <LandingDiv>
                     <LandingHeader>
                         <TransitionGroup component={null}>
@@ -36,7 +37,7 @@ const GettingStarted = () => {
                                 </CSSTransition>
                             )}
                         </TransitionGroup>
-                        <LandingHeaderItem>
+                        <GettingStartedHeaderItem>
                             <TransitionGroup component={null}>
                                 {isMounted && (
                                     <CSSTransition classNames={fadeUp} timeout={timeout}>
@@ -56,11 +57,11 @@ const GettingStarted = () => {
                                 <TransitionGroup component={null}>
                                 {isMounted &&
                                     gettingStartedItems &&
-                                    gettingStartedItems.map(({ title, body }, i) => (
+                                    gettingStartedItems.map(({ title, body, url }, i) => (
                                             <CSSTransition key={i} classNames={fadeUp} timeout={timeout}>
                                                 <li key={i} style={{ transitionDelay: `${i * 100}ms` }}>
-                                                    <span>{title}</span>
-                                                    {body}
+                                                    <p><span>{title}</span> {body}</p>
+                                                    <img src={url} alt=""/>
                                                 </li>
                                             </CSSTransition>
                                     ))
@@ -77,10 +78,10 @@ const GettingStarted = () => {
                                     </CSSTransition>
                                 )}
                             </TransitionGroup>
-                        </LandingHeaderItem>
+                        </GettingStartedHeaderItem>
                     </LandingHeader>
                 </LandingDiv>
-            </LandingSection>
+            </GettingStartedSection>
     )
 }
 

@@ -17,6 +17,29 @@ const Header = ({ isHome }) => {
         setScrolledToTop(window.pageYOffset < 50)
     }
 
+    const smoothScroll = (e, target) => {
+        e.preventDefault();
+        localStorage.setItem('isLearning', 'false');
+
+        if (target === "#home") {
+            const offsetTop = 0;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth',
+            });
+        } else {
+            const targetElement = document.querySelector(target);
+            const rect = targetElement.getBoundingClientRect();
+            const offsetTop = rect.top + window.pageYOffset - 80;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth',
+            });
+        };
+    }
+
     useEffect(() => {
         const timeout = setTimeout(() => {
             setIsMounted(true);
@@ -37,7 +60,7 @@ const Header = ({ isHome }) => {
     const logo = (
         <Logo>
             {isHome ? (
-                <a href="/" aria-label="home">
+                <a href="/" aria-label="home" onClick={(e) => smoothScroll(e, '#home')}>
                     Water Cooling Guide
                 </a>
             ) : (
@@ -67,7 +90,8 @@ const Header = ({ isHome }) => {
                                         navLinks.map(({ url, name }, i) => (
                                             <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                                                 <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                                                    <a href={url}>{(i+1) + ". " + name}</a>
+                                                    <a href={url} onClick={(e) => smoothScroll(e, url)}>{(i+1) + ". " + name}</a>
+
                                                 </li>
                                             </CSSTransition>
                                         ))

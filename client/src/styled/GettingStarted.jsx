@@ -1,38 +1,27 @@
 import styled from "styled-components";
 
-export const Main = styled.main`
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1600px;
-  min-height: 100vh;
-  padding: 200px 50px;
-`
-export const LandingSection = styled.section`
+export const GettingStartedSection = styled.section`
+  display: flex;
   margin-top: 200px;
-  max-width: 1000px;
+  width: 1800px;
   height: auto;
   max-height: fit-content;
+  align-items: center;
+  justify-content: center;
 `
 
-export const LandingDiv = styled.div`
-  width: 100%;
+export const ImagesDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0;
-`
-
-export const LandingHeader = styled.div`
-  text-align: left;
-
-  h1 {
-    color: white;
+  margin: 200px 0 0 200px;
+  
+  img {
+    max-width: 300px;
+    max-height: 120px;
   }
 `
 
-
-
-export const LandingHeaderItem = styled.div`
+export const GettingStartedHeaderItem = styled.div`
   margin-bottom: 100px;
 
   h2 {
@@ -43,6 +32,7 @@ export const LandingHeaderItem = styled.div`
 
   span {
     color: var(--light-yellow-1);
+    font-size: 40px;
     font-weight: 700;
   }
   
@@ -51,6 +41,7 @@ export const LandingHeaderItem = styled.div`
     color: white;
     line-height: 1.6;
     font-weight: 600;
+    width: 70%;
   }
   
   ul {
@@ -60,15 +51,11 @@ export const LandingHeaderItem = styled.div`
   
   li {
     margin-bottom: 50px;
-    font-size: 30px;
     display: flex;
-    justify-content: space-between;
     
     img {
       margin-left: 200px;
-      max-width: 500px;
+      max-height: 400px;
     }
   }
-  
-  
-`
+  `
