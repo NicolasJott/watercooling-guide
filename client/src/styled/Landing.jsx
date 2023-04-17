@@ -6,12 +6,25 @@ export const Main = styled.main`
   max-width: 1600px;
   min-height: 100vh;
   padding: 200px 50px;
+  
+  @media (min-width: 700px) {
+    padding: 200px 80px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0 50px;
+  }
+  
+  
 `
 export const LandingSection = styled.section`
-  margin-top: 200px;
+  margin: 0 auto;
+  padding: 100px 0;
   max-width: 1000px;
-  height: auto;
-  max-height: fit-content;
+
+  @media (max-width: 768px) {
+    padding: 90px 0;
+  }
 `
 
 export const LandingDiv = styled.div`
@@ -25,6 +38,10 @@ export const LandingDiv = styled.div`
 export const LandingHeader = styled.div`
   text-align: left;
 
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
   h1 {
     color: white;
   }
@@ -34,7 +51,7 @@ export const LandingHeader = styled.div`
 
 export const LandingHeaderItem = styled.div`
   margin-bottom: 100px;
-
+  
   h2 {
     color: white;
     font-size: 60px;
@@ -67,6 +84,23 @@ export const LandingHeaderItem = styled.div`
     img {
       margin-left: 200px;
       max-width: 500px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    text-align: left;
+    
+    h2 {
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 26px;
+      line-height: 1.3;
+    }
+    
+    ul {
+      margin: 0;
     }
   }
   

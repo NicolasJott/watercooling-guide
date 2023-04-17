@@ -2,10 +2,6 @@ module.exports = {
 
     navLinks: [
         {
-            name: 'Introduction',
-            url: '#landing',
-        },
-        {
             name: 'FAQ',
             url:'#faq',
         },

@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const FAQSection = styled.section`
-  margin-top: 200px;
+  margin: 0 auto;
+  padding: 100px 0;
   max-width: 1000px;
-  height: auto;
-  max-height: fit-content;
+
+  @media (min-width: 1080px) {
+    width: 1400px;
+  }
 `
 
 export const FAQItem = styled.div`
@@ -35,5 +38,23 @@ export const FAQItem = styled.div`
     list-style-type: none;
     margin-bottom: 30px;
     font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    text-align: left;
+
+    h2 {
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 26px;
+      line-height: 1.3;
+      width: 100%;
+    }
+
+    ul {
+      margin: 0;
+    }
   }
 `

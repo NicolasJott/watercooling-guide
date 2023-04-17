@@ -1,16 +1,22 @@
 import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header`
-  margin-top: 5px;
   display: flex;
   width: 100%;
-  position: fixed;
-  justify-content: center;
   top: 0;
-  right: 0;
-  left: 0;
-  z-index: 9;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  z-index: 11;
+  padding: 0 50px;
+  filter: none !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  @media (max-width: 768px) {
+    padding: 0 40px;
+  }
 
   ${props =>
           props.scrollDirection === 'down' &&
@@ -28,10 +34,16 @@ export const HeaderNav = styled.nav`
   background-color: var(--navbar-outer);
   border-radius: 1rem;
   height: 80px;
-  width: 1200px;
+  width: 80%;
   align-items: center;
   padding: 4px;
+  margin-top: 5px;
   justify-content: center;
+  z-index: 12;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const HeaderNavInner = styled.div`
@@ -45,15 +57,22 @@ export const HeaderNavInner = styled.div`
 `
 
 export const Logo = styled.div`
-  
-  a {
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
-    
-  }
   display: flex;
   margin-left: 20px;
+  
+  a {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 10px;
+    
+    a {
+      font-size: 20px;
+    }
+  }
 
 
 `
@@ -81,6 +100,10 @@ export const NavItems = styled.div`
     list-style-type: none;
     margin-right: 20px;
     margin-left: 30px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 
 `

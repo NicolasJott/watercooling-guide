@@ -31,7 +31,7 @@ const Header = ({ isHome }) => {
         } else {
             const targetElement = document.querySelector(target);
             const rect = targetElement.getBoundingClientRect();
-            const offsetTop = rect.top + window.pageYOffset - 80;
+            const offsetTop = rect.top + window.pageYOffset;
 
             window.scrollTo({
                 top: offsetTop,
@@ -91,7 +91,6 @@ const Header = ({ isHome }) => {
                                             <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                                                 <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
                                                     <a href={url} onClick={(e) => smoothScroll(e, url)}>{(i+1) + ". " + name}</a>
-
                                                 </li>
                                             </CSSTransition>
                                         ))
