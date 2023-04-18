@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import {LandingDiv, LandingHeader, LandingHeaderItem, LandingSection} from "../styled/Landing";
+import {LandingDiv, LandingHeader} from "../styled/Landing";
 import sr from "../utils/ScrollReveal";
 import {srConfig, faqItems} from "../config";
 import {FAQItem, FAQSection} from "../styled/FAQ";

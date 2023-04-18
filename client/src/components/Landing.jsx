@@ -1,9 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {LandingHeaderItem, LandingDiv, LandingHeader, LandingSection} from "../styled/Landing";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {navDelay} from "../utils";
-import sr from "../utils/ScrollReveal";
-import { srConfig, landingItems } from "../config";
+import {  landingItems } from "../config";
 
 const Landing = () => {
     const [isMounted, setIsMounted] = useState(false);

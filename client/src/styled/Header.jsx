@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   top: 0;
   justify-content: center;
   align-items: center;
-  position: sticky;
+  position: fixed;
   z-index: 11;
   padding: 0 50px;
   filter: none !important;
@@ -102,9 +102,13 @@ export const NavItems = styled.div`
     margin-left: 30px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     display: none;
   }
+
+`
+
+export const NavButton = styled.div`
 
 `
 

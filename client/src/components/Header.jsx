@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { HeaderContainer, HeaderNav, HeaderNavInner, Logo, NavItems } from "../styled/Header";
-import {CSSTransition, Transition, TransitionGroup} from 'react-transition-group';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {navLinks} from "../config";
 import {loaderDelay} from "../utils";
 import PropTypes from "prop-types";
 import {useScrollDirection} from "../hooks";
 import {Link} from "react-router-dom";
+import Menu from "./Menu";
+import {smoothScroll} from "../hooks/smoothScroll";
 
 
 const Header = ({ isHome }) => {
@@ -15,29 +17,6 @@ const Header = ({ isHome }) => {
 
     const handleScroll = () => {
         setScrolledToTop(window.pageYOffset < 50)
-    }
-
-    const smoothScroll = (e, target) => {
-        e.preventDefault();
-        localStorage.setItem('isLearning', 'false');
-
-        if (target === "#home") {
-            const offsetTop = 0;
-
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth',
-            });
-        } else {
-            const targetElement = document.querySelector(target);
-            const rect = targetElement.getBoundingClientRect();
-            const offsetTop = rect.top + window.pageYOffset;
-
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth',
-            });
-        };
     }
 
     useEffect(() => {
@@ -98,6 +77,7 @@ const Header = ({ isHome }) => {
                             </TransitionGroup>
                         </ul>
                     </NavItems>
+                    <Menu/>
                 </HeaderNavInner>
             </HeaderNav>
         </HeaderContainer>

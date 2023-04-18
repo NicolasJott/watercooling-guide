@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import {LandingHeader, LandingSection} from "../styled/Landing";
+import {LandingHeader} from "../styled/Landing";
 import {InstallationBox, InstallSection} from "../styled/Installation";
 import sr from "../utils/ScrollReveal";
 import {srConfig} from "../config";
