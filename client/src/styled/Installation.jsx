@@ -11,10 +11,21 @@ export const InstallSection = styled.section`
 `
 export const InstallationBox = styled.div`
   display: flex;
-  width: 1000px;
-  height: 800px;
-  background-color: rgba(255, 255, 255, 0.8);
+  flex-direction: column;
+  width: 1200px;
+  height: 900px;
+  padding: 50px;
   border-radius: 20px;
-  padding: 10px;
   margin: 10px 200px;
+  background-color: rgba(255, 255, 255, 0.8);
+
+`
+
+export const InstallWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+ 
 `

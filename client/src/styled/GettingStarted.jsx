@@ -59,7 +59,7 @@ export const GettingStartedHeaderItem = styled.div`
       max-height: 400px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1080px) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
