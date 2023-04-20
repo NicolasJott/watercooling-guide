@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
-import {LandingHeaderItem, LandingDiv, LandingHeader} from "../styled/Landing";
+import { LandingDiv, LandingHeader} from "../styled/Landing";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import sr from "../utils/ScrollReveal";
 import {srConfig, gettingStartedItems} from "../config";
 import {navDelay} from "../utils";
-import {GettingStartedHeaderItem, GettingStartedSection, ImagesDiv} from "../styled/GettingStarted";
+import {GettingStartedHeaderItem, GettingStartedSection} from "../styled/GettingStarted";
 
 const GettingStarted = () => {
     const revealContainer = useRef(null)

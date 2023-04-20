@@ -7,6 +7,21 @@ export const Main = styled.main`
   min-height: 100vh;
   padding: 200px 50px;
   
+  &.blur {
+      overflow: hidden;
+
+      header {
+        background-color: transparent;
+      }
+
+      #content > * {
+        filter: blur(5px) brightness(0.7);
+        transition: var(--transition);
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+  
   @media (min-width: 700px) {
     padding: 200px 80px;
   }
