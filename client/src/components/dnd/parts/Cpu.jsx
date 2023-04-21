@@ -1,9 +1,9 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 
-function Picture({id, url}) {
+function Cpu({id, url}) {
     const [{isDragging}, drag] = useDrag(() => ({
-        type: "image",
+        type: "cpu",
         item: {id: id},
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging(),
@@ -18,5 +18,4 @@ function Picture({id, url}) {
         />
     )
 }
-
-export default Picture
+export default Cpu

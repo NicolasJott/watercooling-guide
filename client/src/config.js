@@ -106,6 +106,30 @@ module.exports = {
 
     ],
 
+    InstallationSteps : [
+        {
+            body: "Step 1: Install CPU Waterblock"
+        },
+        {
+            body: "Step 2: Install Distribution Plate and Pump Combo"
+        },
+        {
+            body: "Step 3: Install Radiator"
+        },
+        {
+            body: "Step 4: Install Fittings"
+        },
+        {
+            body: "Step 5: Install Tubing"
+        },
+        {
+            body: "Step 6: Test For Leaks"
+        },
+        {
+            body: "Step 7: Fill System With Coolant"
+        },
+    ],
+
 
     srConfig: (delay = 200, viewFactor = 0.25) => ({
         origin: 'bottom',
