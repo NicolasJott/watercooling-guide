@@ -33,18 +33,11 @@ const GettingStarted = () => {
                         <TransitionGroup component={null}>
                             {isMounted && (
                                 <CSSTransition classNames={fadeUp} timeout={timeout}>
-                                    <h1>Getting Started</h1>
+                                    <h1>Choosing Components</h1>
                                 </CSSTransition>
                             )}
                         </TransitionGroup>
                         <GettingStartedHeaderItem>
-                            <TransitionGroup component={null}>
-                                {isMounted && (
-                                    <CSSTransition classNames={fadeUp} timeout={timeout}>
-                                        <h2>Choosing Components</h2>
-                                    </CSSTransition>
-                                )}
-                            </TransitionGroup>
                             <TransitionGroup component={null}>
                                 {isMounted && (
                                     <CSSTransition classNames={fadeUp} timeout={timeout}>

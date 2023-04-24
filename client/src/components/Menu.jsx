@@ -172,7 +172,7 @@ const Menu = () => {
                             <ul>
                                 {navLinks.map(({ url, name}, i) => (
                                         <li key={i}>
-                                            <a href={url} onClick={(e) => {setMenuOpen(false); smoothScroll(e, url)}}>{(i+1) + ". " + name}</a>
+                                            <a href={url} onClick={(e) => {setMenuOpen(false); smoothScroll(e, url)}}>{name}</a>
                                         </li>
                                 ))}
                             </ul>

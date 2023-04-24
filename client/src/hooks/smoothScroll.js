@@ -12,7 +12,7 @@ export const smoothScroll = (e, target) => {
     } else {
         const targetElement = document.querySelector(target);
         const rect = targetElement.getBoundingClientRect();
-        const offsetTop = rect.top + window.pageYOffset;
+        const offsetTop = rect.top + window.pageYOffset - 85;
 
         window.scrollTo({
             top: offsetTop,

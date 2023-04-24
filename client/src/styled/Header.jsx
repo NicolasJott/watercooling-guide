@@ -17,16 +17,7 @@ export const HeaderContainer = styled.header`
   @media (max-width: 768px) {
     padding: 0 40px;
   }
-
-  ${props =>
-          props.scrollDirection === 'down' &&
-          !props.scrolledToTop &&
-          css`
-        height: 80px;
-        transform: translateY(calc(-85px));
-        box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-      `};
-}
+  
 `
 
 export const HeaderNav = styled.nav`

@@ -14,7 +14,7 @@ function Distro({id, url}) {
             ref={drag}
             src={url}
             width="200px"
-            style={{ transform: 'translate(0, 0)'}}
+            style={{ transform: 'translate(0, 0)', cursor: isDragging ? 'pointer' : ''}}
         />
     )
 }

@@ -14,7 +14,7 @@ function Radiator({id, url}) {
             ref={drag}
             src={url}
             width="100%"
-            style={{ transform: 'translate(0, 0)'}}
+            style={{ transform: 'translate(0, 0)', cursor: isDragging ? 'pointer' : ''}}
         />
     )
 }

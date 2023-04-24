@@ -25,13 +25,6 @@ const Landing = () => {
                 <LandingDiv>
                             <LandingHeader>
                                 <TransitionGroup component={null}>
-                                    {isMounted && (
-                                        <CSSTransition classNames={fadeUp} timeout={timeout}>
-                                            <h1>Introduction</h1>
-                                        </CSSTransition>
-                                    )}
-                                </TransitionGroup>
-                                <TransitionGroup component={null}>
                                     {isMounted &&
                                      landingItems &&
                                             landingItems.map(({ header, body }, i) =>(

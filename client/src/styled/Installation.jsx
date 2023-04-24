@@ -19,6 +19,16 @@ export const InstallationBox = styled.div`
   margin: 10px 200px;
   background-color: rgba(255, 255, 255, 0.8);
 
+  @media (max-width: 1080px) {
+    width: 900px;
+    height: 600px;
+  }
+
+  @media (max-width: 768px) {
+    width: 700px;
+    height: 600px;
+  }
+
 `
 
 export const InstallWrapper = styled.div`

@@ -14,7 +14,7 @@ function Cpu({id, url}) {
             ref={drag}
             src={url}
             width="150px"
-            style={{ transform: 'translate(0, 0)'}}
+            style={{ transform: 'translate(0, 0)', cursor: isDragging ? 'pointer' : ''}}
         />
     )
 }
