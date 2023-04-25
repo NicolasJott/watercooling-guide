@@ -33,7 +33,7 @@ export const RadiatorDiv = styled.div`
   left: 20px;
 `
 
-export const FittingDiv = styled.div`
+export const StyledFittingDiv = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;

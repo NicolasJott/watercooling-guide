@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 import {
     CPUDiv,
     DistroDiv,
-    FittingDiv,
     RadiatorDiv,
+    StyledFittingDiv,
     fittingDivs
 } from "../../styled/DragDrop";
 import {CPUList, DistroList, FittingList, RadiatorList} from "../../config";
@@ -16,6 +16,7 @@ import Cpu from "./parts/Cpu";
 import Distro from "./parts/Distro";
 import Radiator from "./parts/Radiator";
 import Fitting from "./parts/Fitting";
+import FittingDiv from "./targets/FittingDiv";
 
 
 
@@ -24,7 +25,7 @@ function DragDrop({ onStepChange, currentStep }) {
     const [distroSet, setDistroSet] = useState(false)
     const [radiatorSet, setRadiatorSet] = useState(false)
     const [fittingSet, setFittingSet] = useState(false)
-    const [fittingImage, setFittingImage] = useState(null);
+    const [fittingImages, setFittingImages] = useState(FittingList);
     const [fittingList, setFittingList] = useState(fittingDivs);
 
 
@@ -33,8 +34,9 @@ function DragDrop({ onStepChange, currentStep }) {
     const [DistroOb, setDistroOb] = useState([])
     const [Rad, setRad] = useState([])
 
+
     const [{isOver}, drop] = useDrop(() => ({
-        accept: ['cpu', 'distro', 'radiator', 'fitting'],
+        accept: ['cpu', 'distro', 'radiator'],
         drop: (item, monitor) => {
             const itemType = monitor.getItemType();
             switch (itemType) {
@@ -46,9 +48,6 @@ function DragDrop({ onStepChange, currentStep }) {
                     break;
                 case 'radiator':
                     addRadToBoard(item.id);
-                    break;
-                case 'fitting':
-                    addFittingToBoard(item.id);
                     break;
                 default:
                     break;
@@ -80,16 +79,10 @@ function DragDrop({ onStepChange, currentStep }) {
         setRadiatorSet(true)
         ChangeStep()
     }
-    const addFittingToBoard = (id) => {
-        const pictureList = FittingList.filter((picture) => id === picture.id);
-        const newFittingList = fittingList.map(fd =>
-            fd.id === fd.id ? { ...fd, image: pictureList[0].url } : fd
-        );
-        setFittingList(newFittingList)
-        setFittingSet(true)
-        ChangeStep()
-    };
 
+    function handleFittingDrop(id) {
+        setFittingImages(prevState => prevState.slice(0, -1));
+    }
     function ChangeStep() {
         onStepChange()
     }
@@ -126,18 +119,9 @@ function DragDrop({ onStepChange, currentStep }) {
                     <>
                         {fittingList.map((fittingDiv, index) => (
                             <FittingDiv key={fittingDiv.id}
+                                        id={fittingDiv.id}
                                         style={{ bottom: fittingDiv.bottom, left: fittingDiv.left }}
-                                        image={fittingDiv.image}
-                            />
-                        ))}
-                    </>
-                )}
-                {fittingSet && (
-                    <>
-                        {fittingList.map((fittingDiv, index) => (
-                            <FittingDiv key={fittingDiv.id}
-                                        style={{ bottom: fittingDiv.bottom, left: fittingDiv.left }}
-                                        image={fittingDiv.image}
+                                        onFittingDrop={handleFittingDrop}
                             />
                         ))}
                     </>
@@ -164,7 +148,7 @@ function DragDrop({ onStepChange, currentStep }) {
                                 </li>
                             ))}
                         {currentStep === 3 && !fittingSet &&
-                            FittingList.map((picture) => (
+                            fittingImages.map((picture) => (
                                 <li>
                                     <Fitting url={picture.url} id={picture.id}/>
                                 </li>
