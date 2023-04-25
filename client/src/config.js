@@ -154,31 +154,31 @@ module.exports = {
 
     FittingList: [
         {
-            id: '1',
+            id: 1,
             url: '../fitting.png'
         },
         {
-            id: '2',
+            id: 2,
             url: '../fitting.png'
         },
         {
-            id: '3',
+            id: 3,
             url: '../fitting.png'
         },
         {
-            id: '4',
+            id: 4,
             url: '../fitting.png'
         },
         {
-            id: '5',
+            id: 5,
             url: '../fitting.png'
         },
         {
-            id: '6',
+            id: 6,
             url: '../fitting.png'
         },
         {
-            id: '7',
+            id: 7,
             url: '../fitting.png'
         },
     ],

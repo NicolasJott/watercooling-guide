@@ -7,11 +7,8 @@ import {
     CPUDiv,
     DistroDiv,
     FittingDiv,
-    FittingDiv2,
-    FittingDiv3,
-    FittingDiv4,
-    FittingDiv5, FittingDiv6, FittingDiv7, FittingDiv8,
-    RadiatorDiv
+    RadiatorDiv,
+    fittingDivs
 } from "../../styled/DragDrop";
 import {CPUList, DistroList, FittingList, RadiatorList} from "../../config";
 
@@ -27,6 +24,9 @@ function DragDrop({ onStepChange, currentStep }) {
     const [distroSet, setDistroSet] = useState(false)
     const [radiatorSet, setRadiatorSet] = useState(false)
     const [fittingSet, setFittingSet] = useState(false)
+    const [fittingImage, setFittingImage] = useState(null);
+    const [fittingList, setFittingList] = useState(fittingDivs);
+
 
 
     const [CPU, setCPU] = useState([])
@@ -80,12 +80,15 @@ function DragDrop({ onStepChange, currentStep }) {
         setRadiatorSet(true)
         ChangeStep()
     }
-
     const addFittingToBoard = (id) => {
-        const pictureList = FittingList.filter((picture) => id === picture.id)
-        setRad([pictureList[0]])
-        setRadiatorSet(true)
-    }
+        const pictureList = FittingList.filter((picture) => id === picture.id);
+        const newFittingList = fittingList.map(fd =>
+            fd.id === fd.id ? { ...fd, image: pictureList[0].url } : fd
+        );
+        setFittingList(newFittingList)
+        setFittingSet(true)
+        ChangeStep()
+    };
 
     function ChangeStep() {
         onStepChange()
@@ -119,16 +122,24 @@ function DragDrop({ onStepChange, currentStep }) {
                         <Radiator url={Rad[0].url} id={Rad[0].id } style={ {backgroundColor: "rgba(0,0,0,0)", width: '800px'}}/>
                     </RadiatorDiv>
                 )}
-                {currentStep === 3 && !fittingSet && (
+                {currentStep === 3 &&  (
                     <>
-                        <FittingDiv/>
-                        <FittingDiv2/>
-                        <FittingDiv3/>
-                        <FittingDiv4/>
-                        <FittingDiv5/>
-                        <FittingDiv6/>
-                        <FittingDiv7/>
-                        <FittingDiv8/>
+                        {fittingList.map((fittingDiv, index) => (
+                            <FittingDiv key={fittingDiv.id}
+                                        style={{ bottom: fittingDiv.bottom, left: fittingDiv.left }}
+                                        image={fittingDiv.image}
+                            />
+                        ))}
+                    </>
+                )}
+                {fittingSet && (
+                    <>
+                        {fittingList.map((fittingDiv, index) => (
+                            <FittingDiv key={fittingDiv.id}
+                                        style={{ bottom: fittingDiv.bottom, left: fittingDiv.left }}
+                                        image={fittingDiv.image}
+                            />
+                        ))}
                     </>
                 )}
             </PCSide>
