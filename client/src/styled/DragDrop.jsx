@@ -50,53 +50,55 @@ export const StyledFittingDiv = styled.div`
   
 `
 
+export const CpuFittingTargets = [
+    {
+        id: 1,
+        bottom: "82.6%",
+        left: "27.8%",
+        image: null
+    },
+    {
+        id: 2,
+        bottom: "86.3%",
+        left: "32.8%",
+        image: null
+    }
+]
 export const fittingDivs = [
     {
         id: 1,
-        bottom: "481px",
-        left: "240px",
+        bottom: "33.3%",
+        left: "72.2%",
         image: null,
     },
     {
         id: 2,
-        bottom: "511px",
-        left: "283px",
+        bottom: "65.8%",
+        left: "72.2%",
         image: null,
     },
     {
         id: 3,
-        bottom: "518px",
-        left: "624px",
+        bottom: "64.7%",
+        left: "72.2%",
         image: null,
     },
     {
         id: 4,
-        bottom: "586px",
-        left: "624px",
+        bottom: "54.8%",
+        left: "72.2%",
         image: null,
     },
     {
         id: 5,
-        bottom: "469px",
-        left: "624px",
+        bottom: "89%",
+        left: "86.7%",
         image: null,
     },
     {
         id: 6,
-        bottom: "417px",
-        left: "624px",
-        image: null,
-    },
-    {
-        id: 7,
-        bottom: "772px",
-        left: "749px",
-        image: null,
-    },
-    {
-        id: 8,
-        bottom: "716px",
-        left: "749px",
+        bottom: "82%",
+        left: "86.7%",
         image: null,
     },
 

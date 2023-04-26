@@ -2,10 +2,10 @@ import {StyledFittingDiv} from "../../../styled/DragDrop";
 import Fitting from "../parts/Fitting";
 import React, {useState} from "react";
 import {useDrop} from "react-dnd";
-import {DistroFittingList} from "../../../config";
+import {CpuFittingList1} from "../../../config";
 import PropTypes from "prop-types";
 
-function FittingDiv({id, imageUrl, style, onFittingDrop}) {
+function CpuFittingDiv({id, imageUrl, style}) {
     const [image, setImage] = useState(imageUrl)
 
     const [{isOver}, drop] = useDrop(() => ({
@@ -20,9 +20,8 @@ function FittingDiv({id, imageUrl, style, onFittingDrop}) {
     }));
 
     const addFittingToBoard = (id) => {
-        const pictureList = DistroFittingList.filter((fitting) => id === fitting.id);
+        const pictureList = CpuFittingList1.filter((fitting) => id === fitting.id);
         setImage([pictureList[0].url])
-        onFittingDrop()
     };
 
     return (
@@ -38,10 +37,9 @@ function FittingDiv({id, imageUrl, style, onFittingDrop}) {
     );
 }
 
-FittingDiv.propTypes = {
-    onFittingDrop: PropTypes.func.isRequired,
+CpuFittingDiv.propTypes = {
     id: PropTypes.string.isRequired,
     style: PropTypes.object,
 };
 
-export default FittingDiv
+export default CpuFittingDiv

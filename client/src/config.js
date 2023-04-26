@@ -118,10 +118,10 @@ module.exports = {
             body: "Step 3: Install Radiator"
         },
         {
-            body: "Step 4: Install Fittings"
+            body: "Step 4: Install Fittings on Distribution Plate"
         },
         {
-            body: "Step 5: Install Tubing"
+            body: "Step 5: Install Fittings on CPU Block"
         },
         {
             body: "Step 6: Test For Leaks"
@@ -135,6 +135,13 @@ module.exports = {
         {
             id: 'cpu',
             url: '../CPU_Block.png'
+        },
+    ],
+
+    CpuFittingList1: [
+        {
+            id: '90right',
+            url: '../90_right.png'
         },
     ],
 
@@ -152,7 +159,7 @@ module.exports = {
         }
     ],
 
-    FittingList: [
+    DistroFittingList: [
         {
             id: 1,
             url: '../fitting.png'
@@ -175,10 +182,6 @@ module.exports = {
         },
         {
             id: 6,
-            url: '../fitting.png'
-        },
-        {
-            id: 7,
             url: '../fitting.png'
         },
     ],

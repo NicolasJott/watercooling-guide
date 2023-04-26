@@ -6,8 +6,8 @@ export const GettingStartedSection = styled.section`
   padding: 100px 0;
   max-width: 1800px;
 
-  @media (min-width: 1080px) {
-    width: 1400px;
+  @media (max-width: 1080px) {
+    max-width: 1000px;
   }
 `
 
@@ -24,7 +24,7 @@ export const ImagesDiv = styled.div`
 
 export const GettingStartedHeaderItem = styled.div`
   margin-bottom: 100px;
-  width: 100%;
+  max-width: 1400px;
 
 
   h1 {
@@ -41,6 +41,7 @@ export const GettingStartedHeaderItem = styled.div`
   p {
     font-size: 24px;
     color: white;
+    margin-bottom: 50px;
   }
   
   
@@ -70,10 +71,11 @@ export const GettingStartedHeaderItem = styled.div`
       height: 300px;
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1250px) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      max-width: 1000px;
 
       p {
         width: 100%;
@@ -112,7 +114,7 @@ export const GettingStartedHeaderItem = styled.div`
 
     p {
       font-size: 22px;
-      width: 80%;
+      width: 100%;
     }
 
   }

@@ -24,7 +24,7 @@ export const InstallationBox = styled.div`
     height: 600px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     width: 700px;
     height: 600px;
   }

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {DraggableItems, PCSide} from "../Installation";
 import {useDrop} from "react-dnd";
 import PropTypes from "prop-types";
@@ -7,16 +7,18 @@ import {
     CPUDiv,
     DistroDiv,
     RadiatorDiv,
-    StyledFittingDiv,
+    CpuFittingTargets,
     fittingDivs
 } from "../../styled/DragDrop";
-import {CPUList, DistroList, FittingList, RadiatorList} from "../../config";
+import {CPUList, DistroList, DistroFittingList, RadiatorList, CpuFittingList1} from "../../config";
 
 import Cpu from "./parts/Cpu";
 import Distro from "./parts/Distro";
 import Radiator from "./parts/Radiator";
 import Fitting from "./parts/Fitting";
 import FittingDiv from "./targets/FittingDiv";
+import CpuFittingDiv from "./targets/CpuFittingDiv";
+import AngleFitting from "./parts/AngleFitting";
 
 
 
@@ -25,7 +27,8 @@ function DragDrop({ onStepChange, currentStep }) {
     const [distroSet, setDistroSet] = useState(false)
     const [radiatorSet, setRadiatorSet] = useState(false)
     const [fittingSet, setFittingSet] = useState(false)
-    const [fittingImages, setFittingImages] = useState(FittingList);
+    const [distroFittingsDone, setDistroFittingsDone] = useState(false)
+    const [fittingImages, setFittingImages] = useState(DistroFittingList);
     const [fittingList, setFittingList] = useState(fittingDivs);
 
 
@@ -80,12 +83,21 @@ function DragDrop({ onStepChange, currentStep }) {
         ChangeStep()
     }
 
-    function handleFittingDrop(id) {
-        setFittingImages(prevState => prevState.slice(0, -1));
+    function handleFittingDrop() {
+            setFittingImages(prevState => prevState.slice(0, -1));
     }
     function ChangeStep() {
         onStepChange()
     }
+
+    useEffect(() => {
+        console.log(fittingImages);
+
+        if (currentStep === 3 && fittingImages.length === 0) {
+            setDistroFittingsDone(true);
+            ChangeStep();
+        }
+    }, [fittingImages]);
 
     return(
         <>
@@ -117,11 +129,35 @@ function DragDrop({ onStepChange, currentStep }) {
                 )}
                 {currentStep === 3 &&  (
                     <>
-                        {fittingList.map((fittingDiv, index) => (
+                        {fittingDivs.map((fittingDiv, index) => (
                             <FittingDiv key={fittingDiv.id}
                                         id={fittingDiv.id}
                                         style={{ bottom: fittingDiv.bottom, left: fittingDiv.left }}
+                                        imageUrl={null}
                                         onFittingDrop={handleFittingDrop}
+                            />
+                        ))}
+                    </>
+                )}
+                {distroFittingsDone &&  (
+                    <>
+                        {fittingDivs.map((fittingDiv, index) => (
+                            <FittingDiv key={fittingDiv.id}
+                                        id={fittingDiv.id}
+                                        style={{ bottom: fittingDiv.bottom, left: fittingDiv.left }}
+                                        imageUrl={DistroFittingList[0].url}
+                                        onFittingDrop={handleFittingDrop}
+                            />
+                        ))}
+                    </>
+                )}
+                {currentStep === 4 && (
+                    <>
+                        {CpuFittingTargets.map((target) => (
+                            <CpuFittingDiv id={target.id}
+                                           key={target.id}
+                                           style={{ bottom: target.bottom, left: target.left }}
+                                           imageUrl={null}
                             />
                         ))}
                     </>
@@ -151,6 +187,12 @@ function DragDrop({ onStepChange, currentStep }) {
                             fittingImages.map((picture) => (
                                 <li>
                                     <Fitting url={picture.url} id={picture.id}/>
+                                </li>
+                            ))}
+                        {currentStep === 4 &&
+                            CpuFittingList1.map((picture) => (
+                                <li>
+                                    <AngleFitting url={picture.url} id={picture.id}/>
                                 </li>
                             ))}
                 </ul>
