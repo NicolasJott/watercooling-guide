@@ -5,7 +5,7 @@ import {useDrop} from "react-dnd";
 import {DistroFittingList} from "../../../config";
 import PropTypes from "prop-types";
 
-function FittingDiv({id, imageUrl, style, onFittingDrop}) {
+function FittingDiv({id, imageUrl, style, currentStep, onPartDrop}) {
     const [image, setImage] = useState(imageUrl)
 
     const [{isOver}, drop] = useDrop(() => ({
@@ -20,9 +20,8 @@ function FittingDiv({id, imageUrl, style, onFittingDrop}) {
     }));
 
     const addFittingToBoard = (id) => {
-        const pictureList = DistroFittingList.filter((fitting) => id === fitting.id);
-        setImage([pictureList[0].url])
-        onFittingDrop()
+        setImage(currentStep.pictureList[0].url)
+        onPartDrop()
     };
 
     return (
@@ -39,9 +38,11 @@ function FittingDiv({id, imageUrl, style, onFittingDrop}) {
 }
 
 FittingDiv.propTypes = {
-    onFittingDrop: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
+    currentStep: PropTypes.object,
     style: PropTypes.object,
+    onPartDrop: PropTypes.func,
+
 };
 
 export default FittingDiv

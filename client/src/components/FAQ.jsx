@@ -20,7 +20,7 @@ const FAQ = () => {
                         <ul>
                             {faqItems &&
                                 faqItems.map(({ question, answer },i) =>(
-                                    <li>
+                                    <li key={i}>
                                         <h3>Q: {question}</h3>
                                         <p>A: {answer}</p>
                                     </li>

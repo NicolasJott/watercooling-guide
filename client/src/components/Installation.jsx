@@ -3,14 +3,26 @@ import styled from "styled-components";
 import {LandingHeader, LandingSection} from "../styled/Landing";
 import {InstallationBox, InstallSection, InstallWrapper} from "../styled/Installation";
 import sr from "../utils/ScrollReveal";
-import {srConfig} from "../config";
+import {DistroFittingList, srConfig} from "../config";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import DragDrop from "./dnd/DragDrop";
 import {InstallationSteps} from "../config";
+import CpuDiv from "./dnd/targets/CpuDiv";
+import DistroDiv from "./dnd/targets/DistroDiv";
+import RadiatorDiv from "./dnd/targets/RadiatorDiv";
+import FanDiv from "./dnd/targets/FanDiv";
+import FittingDiv from "./dnd/targets/FittingDiv";
+import {CpuFittingTargets} from "../styled/DragDrop";
+import CpuFittingDiv from "./dnd/targets/CpuFittingDiv";
+import Cpu from "./dnd/parts/Cpu";
+import Distro from "./dnd/parts/Distro";
+import Radiator from "./dnd/parts/Radiator";
+import Fan from "./dnd/parts/Fan";
+import Fitting from "./dnd/parts/Fitting";
 
 export const PCSide = styled.div`
-  background-image: url('empty_pc.png');
+  background-image: url('../pcs/empty_pc.png');
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: contain;
@@ -40,10 +52,78 @@ export const DraggableItems = styled.div`
 const Installation = () => {
     const revealContainer = useRef(null)
     const [currentStep, setCurrentStep] = useState(0)
+    const [cpuSet, setCpuSet] = useState(false)
+    const [distroSet, setDistroSet] = useState(false)
+    const [radiatorSet, setRadiatorSet] = useState(false)
+    const [fanSet, setFanSet] = useState(false)
+    const [flatSet, setFlatSet] = useState(false)
+    const [distroAngleSet, setDistroAngleSet] = useState(false)
+    const [distroFittingsDone, setDistroFittingsDone] = useState(false)
+    const [fittingImages, setFittingImages] = useState(DistroFittingList);
+    const [installStep, setInstallStep] = useState(InstallationSteps[0])
+    const [fanStep, setFanStep] = useState(InstallationSteps[3])
+    const [distroStep1,setDistroStep1] = useState(InstallationSteps[4])
+    let fanCount = 0
+    let flatCount = 0
+    let angleCount = 0
+
+
 
     function handleStepChange() {
         setCurrentStep(prevStep => prevStep + 1)
-        console.log(currentStep)
+        setInstallStep(InstallationSteps[currentStep + 1])
+        console.log(installStep)
+    }
+
+    function handleFittingDrop() {
+        setFittingImages(prevState => prevState.slice(0, -1));
+    }
+
+
+    function handlePartDrop(id) {
+        switch (id) {
+            case 'cpu':
+                handleStepChange()
+                setCpuSet(true)
+                break
+            case 'distro':
+                handleStepChange()
+                setDistroSet(true)
+                console.log(currentStep)
+
+                break
+            case 'radiator':
+                setRadiatorSet(true)
+                console.log(currentStep)
+                handleStepChange()
+                break
+            case 'fan':
+                fanCount += 1
+                console.log(fanCount)
+                if (fanCount === 3) {
+                    setFanSet(true)
+                    handleStepChange()
+                }
+                break
+            case 'flat':
+                flatCount += 1
+                console.log(flatCount)
+                if (flatCount === 4) {
+                    setFlatSet(true)
+                    handleStepChange()
+                }
+                break
+            case 'angle':
+                angleCount += 1
+                if (angleCount === 2) {
+                    setDistroAngleSet(true)
+                    handleStepChange()
+                }
+                break
+            default:
+                break
+        }
+
     }
 
 
@@ -57,10 +137,81 @@ const Installation = () => {
                 <h1>Installation</h1>
             </LandingHeader>
                 <InstallationBox>
-                    <h1>{InstallationSteps[currentStep].body}</h1>
+                    <h1>{installStep.body}</h1>
                     <InstallWrapper>
                     <DndProvider backend={HTML5Backend}>
-                            <DragDrop onStepChange={handleStepChange} currentStep={currentStep}/>
+                        <PCSide>
+                            <CpuDiv
+                                currentStep={installStep}
+                                imageUrl={null}
+                                onPartDrop={(e) => handlePartDrop('cpu')}
+                            />
+                            {cpuSet && (
+                                <DistroDiv
+                                    currentStep={installStep}
+                                    imageUrl={null}
+                                    onPartDrop={(e) => handlePartDrop('distro')}
+                                />
+                            )}
+                            {distroSet && (
+                                <RadiatorDiv
+                                    currentStep={installStep}
+                                    imageUrl={null}
+                                    onPartDrop={(e) => handlePartDrop('radiator')}
+                                />
+                            )}
+                            {radiatorSet &&
+                                fanStep.FanTargets.map((target) => (
+                                    <FanDiv
+                                        key={target.id}
+                                        currentStep={installStep}
+                                        imageUrl={null}
+                                        style={{ bottom: target.bottom, left: target.left}}
+                                        onPartDrop={(e) => handlePartDrop('fan')}
+                                    />
+                                ))}
+                            {fanSet &&
+                               InstallationSteps[4].DistroFittingTargets.map((target) => (
+                                    <FittingDiv
+                                        key={target.id}
+                                        currentStep={installStep}
+                                        imageUrl={null}
+                                        style={{ bottom: target.bottom, left: target.left}}
+                                        onPartDrop={(e) => handlePartDrop('flat')}
+                                    />
+                                ))}
+                            {flatSet &&
+                                InstallationSteps[5].DistroFittingTargets.map((target) => (
+                                    <FittingDiv
+                                        key={target.id}
+                                        currentStep={installStep}
+                                        imageUrl={null}
+                                        style={{ bottom: target.bottom, left: target.left, transform: target.transform}}
+                                        onPartDrop={(e) => handlePartDrop('angle')}
+                                    />
+                                ))}
+                        </PCSide>
+                        <DraggableItems>
+                            <ul>
+                                {installStep.pictureList.map(({ id, url }, i) => (
+                                    <li>
+                                        {id === 'cpu' ? (
+                                            <Cpu url={url} id={id} key={i}/>
+                                        ) : id === 'distro' ? (
+                                            <Distro url={url} id={id} key={i}/>
+                                        ) : id === 'radiator' ? (
+                                            <Radiator url={url} id={id} key={i}/>
+                                        ) : id === 'fan' ? (
+                                            <Fan url={url} id={id} />
+                                        ) : id === 'flat' ? (
+                                            <Fitting url={url} id={id} />
+                                            ) : id === 'angle' ? (
+                                            <Fitting url={url} id={id} />
+                                        ) : null}
+                                    </li>
+                                ))}
+                            </ul>
+                        </DraggableItems>
                     </DndProvider>
             </InstallWrapper>
                 </InstallationBox>
