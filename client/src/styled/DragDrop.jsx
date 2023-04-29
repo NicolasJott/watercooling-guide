@@ -6,9 +6,9 @@ export const StyledCpuDiv = styled.div`
   border-radius: 20px;
   background-color: white;
   opacity: 30%;
-  position: relative;
-  top: 170px;
-  left: 190px;
+  position: absolute;
+  top: 34%;
+  left: 25%;
 `
 
 export const StyledDistroDiv = styled.div`
@@ -17,20 +17,20 @@ export const StyledDistroDiv = styled.div`
   border-radius: 20px;
   background-color: white;
   opacity: 30%;
-  position: relative;
-  top: -75px;
-  left: 588px;
+  position: absolute;
+  top: 26%;
+  left: 52%;
 `
 
 export const StyledRadiatorDiv = styled.div`
   width: 775px;
-  height: 50px;
+  height: 60px;
   border-radius: 5px;
   background-color: white;
   opacity: 30%;
-  position: relative;
-  bottom: 590px;
-  left: 26px;
+  position: absolute;
+  bottom: 720px;
+  left: 198px;
 `
 
 export const StyledFanDiv = styled.div`

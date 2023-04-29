@@ -52,33 +52,30 @@ export const DraggableItems = styled.div`
 const Installation = () => {
     const revealContainer = useRef(null)
     const [currentStep, setCurrentStep] = useState(0)
+
     const [cpuSet, setCpuSet] = useState(false)
     const [distroSet, setDistroSet] = useState(false)
     const [radiatorSet, setRadiatorSet] = useState(false)
     const [fanSet, setFanSet] = useState(false)
     const [flatSet, setFlatSet] = useState(false)
     const [distroAngleSet, setDistroAngleSet] = useState(false)
-    const [distroFittingsDone, setDistroFittingsDone] = useState(false)
-    const [fittingImages, setFittingImages] = useState(DistroFittingList);
+    const [cpuTopAngleSet, setCpuTopAngleSet] = useState(false)
+    const [cpuRightAngleSet, setCpuRightAngleSet] = useState(false)
+
+
     const [installStep, setInstallStep] = useState(InstallationSteps[0])
     const [fanStep, setFanStep] = useState(InstallationSteps[3])
-    const [distroStep1,setDistroStep1] = useState(InstallationSteps[4])
-    let fanCount = 0
-    let flatCount = 0
-    let angleCount = 0
+    let count = 0
+
 
 
 
     function handleStepChange() {
         setCurrentStep(prevStep => prevStep + 1)
         setInstallStep(InstallationSteps[currentStep + 1])
+        count = 0
         console.log(installStep)
     }
-
-    function handleFittingDrop() {
-        setFittingImages(prevState => prevState.slice(0, -1));
-    }
-
 
     function handlePartDrop(id) {
         switch (id) {
@@ -98,27 +95,38 @@ const Installation = () => {
                 handleStepChange()
                 break
             case 'fan':
-                fanCount += 1
-                console.log(fanCount)
-                if (fanCount === 3) {
+                count += 1
+                console.log(count)
+                if (count === 3) {
                     setFanSet(true)
                     handleStepChange()
                 }
                 break
             case 'flat':
-                flatCount += 1
-                console.log(flatCount)
-                if (flatCount === 4) {
+                count += 1
+                console.log(count)
+                if (count === 4) {
                     setFlatSet(true)
                     handleStepChange()
                 }
                 break
-            case 'angle':
-                angleCount += 1
-                if (angleCount === 2) {
+            case 'topAngleDistro':
+                count += 1
+                if (count === 2) {
                     setDistroAngleSet(true)
                     handleStepChange()
                 }
+                break
+            case 'topAngleCpu':
+                count += 1
+                if (count === 2) {
+                    setCpuTopAngleSet(true)
+                    handleStepChange()
+                }
+                break
+            case 'rightAngleCpu':
+                    setCpuRightAngleSet(true)
+                    handleStepChange()
                 break
             default:
                 break
@@ -187,7 +195,27 @@ const Installation = () => {
                                         currentStep={installStep}
                                         imageUrl={null}
                                         style={{ bottom: target.bottom, left: target.left, transform: target.transform}}
-                                        onPartDrop={(e) => handlePartDrop('angle')}
+                                        onPartDrop={(e) => handlePartDrop('topAngleDistro')}
+                                    />
+                                ))}
+                            {distroAngleSet &&
+                                InstallationSteps[6].CpuFittingTargets.map((target) => (
+                                    <FittingDiv
+                                        key={target.id}
+                                        currentStep={installStep}
+                                        imageUrl={null}
+                                        style={{ bottom: target.bottom, left: target.left, transform: target.transform}}
+                                        onPartDrop={(e) => handlePartDrop('topAngleCpu')}
+                                    />
+                                ))}
+                            {cpuTopAngleSet &&
+                                InstallationSteps[7].CpuFittingTargets.map((target) => (
+                                    <FittingDiv
+                                        key={target.id}
+                                        currentStep={installStep}
+                                        imageUrl={null}
+                                        style={{ bottom: target.bottom, left: target.left}}
+                                        onPartDrop={(e) => handlePartDrop('rightAngleCpu')}
                                     />
                                 ))}
                         </PCSide>
@@ -205,7 +233,11 @@ const Installation = () => {
                                             <Fan url={url} id={id} />
                                         ) : id === 'flat' ? (
                                             <Fitting url={url} id={id} />
-                                            ) : id === 'angle' ? (
+                                        ) : id === 'angleDistro' ? (
+                                            <Fitting url={url} id={id} />
+                                        ) : id === 'angleCPU' ? (
+                                            <Fitting url={url} id={id} />
+                                        ) : id === 'rightCpu' ? (
                                             <Fitting url={url} id={id} />
                                         ) : null}
                                     </li>

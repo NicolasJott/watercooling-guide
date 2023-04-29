@@ -218,11 +218,11 @@ module.exports = {
             body: "Step 6: Install 90 Degree Fittings on Distribution Plate",
             pictureList: [
                 {
-                    id: 'angle',
+                    id: 'angleDistro',
                     url: '../fittings/top_view_angle_fitting_up.PNG'
                 },
                 {
-                    id: 'angle',
+                    id: 'angleDistro',
                     url: '../fittings/top_view_angle_fitting_up.PNG'
                 },
             ],
@@ -247,18 +247,49 @@ module.exports = {
             body: "Step 7: Install 90 Degree Fittings on Cpu Block",
             pictureList: [
                 {
-                    id: 1,
+                    id: 'angleCPU',
                     url: '../fittings/top_view_angle_fitting_right.PNG'
                 },
                 {
-                    id: 2,
+                    id: 'angleCPU',
                     url: '../fittings/top_view_angle_fitting_up.PNG'
                 },
+            ],
+            CpuFittingTargets: [
                 {
-                    id: 3,
-                    url: '../fittings/90_top.PNG'
+                    id: 0,
+                    bottom: "92.5%",
+                    left: "27.8%",
+                    transform: "rotate(270deg)",
+                    image: null,
+                },
+                {
+                    id: 1,
+                    bottom: "96.3%",
+                    left: "32.8%",
+                    transform: "none",
+                    image: null,
+                },
+            ]
+
+        },
+        {
+            body: "Step 7: Install 90 Degree Fitting on Cpu Block",
+            pictureList: [
+                {
+                    id: 'rightCpu',
+                    url: '../fittings/90_top.png'
                 },
             ],
+            CpuFittingTargets: [
+                {
+                    id: 0,
+                    bottom: "92.5%",
+                    left: "27.8%",
+                    image: null,
+                },
+            ]
+
         },
         {
             body: "Step 8: Install Tubing for Cpu Block",
