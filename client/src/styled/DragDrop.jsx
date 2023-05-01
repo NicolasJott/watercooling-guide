@@ -19,7 +19,7 @@ export const StyledDistroDiv = styled.div`
   opacity: 30%;
   position: absolute;
   top: 26%;
-  left: 52%;
+  left: 52.5%;
 `
 
 export const StyledRadiatorDiv = styled.div`
@@ -39,7 +39,7 @@ export const StyledFanDiv = styled.div`
   border-radius: 5px;
   background-color: white;
   opacity: 30%;
-  position: relative;
+  position: absolute;
 `
 
 export const StyledFittingDiv = styled.div`
@@ -48,7 +48,7 @@ export const StyledFittingDiv = styled.div`
   border-radius: 50%;
   background-color: deepskyblue;
   opacity: 30%;
-  position: relative;
+  position: absolute;
 
   ${props => props.image && css`
     background-image: url(${props.image});

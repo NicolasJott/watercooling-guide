@@ -6,15 +6,12 @@ import sr from "../utils/ScrollReveal";
 import {DistroFittingList, srConfig} from "../config";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import DragDrop from "./dnd/DragDrop";
 import {InstallationSteps} from "../config";
 import CpuDiv from "./dnd/targets/CpuDiv";
 import DistroDiv from "./dnd/targets/DistroDiv";
 import RadiatorDiv from "./dnd/targets/RadiatorDiv";
 import FanDiv from "./dnd/targets/FanDiv";
 import FittingDiv from "./dnd/targets/FittingDiv";
-import {CpuFittingTargets} from "../styled/DragDrop";
-import CpuFittingDiv from "./dnd/targets/CpuFittingDiv";
 import Cpu from "./dnd/parts/Cpu";
 import Distro from "./dnd/parts/Distro";
 import Radiator from "./dnd/parts/Radiator";
@@ -169,7 +166,7 @@ const Installation = () => {
                                 />
                             )}
                             {radiatorSet &&
-                                fanStep.FanTargets.map((target) => (
+                                InstallationSteps[3].FanTargets.map((target) => (
                                     <FanDiv
                                         key={target.id}
                                         currentStep={installStep}

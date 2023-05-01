@@ -154,16 +154,16 @@ module.exports = {
             ],
             FanTargets: [
                 {
-                    bottom: "590px",
-                    left: "26px",
+                    bottom: "70.5%",
+                    left: "15%",
                 },
                 {
-                    bottom: "620px",
-                    left: "257px",
+                    bottom: "70.5%",
+                    left: "31%",
                 },
                 {
-                    bottom: "650px",
-                    left: "487px",
+                    bottom: "70.5%",
+                    left: "47%",
                 },
             ]
         },
@@ -190,26 +190,26 @@ module.exports = {
             DistroFittingTargets: [
                 {
                     id: 3,
-                    bottom: "72.2%",
-                    left: "70.8%",
+                    bottom: "57%",
+                    left: "54.2%",
                     image: null,
                 },
                 {
                     id: 4,
-                    bottom: "70.9%",
-                    left: "70.8%",
+                    bottom: "53%",
+                    left: "54.2%",
                     image: null,
                 },
                 {
                     id: 5,
-                    bottom: "91.5%",
-                    left: "85.4%",
+                    bottom: "66.7%",
+                    left: "62.8%",
                     image: null,
                 },
                 {
                     id: 6,
-                    bottom: "84.5%",
-                    left: "85.4%",
+                    bottom: "58%",
+                    left: "62.8%",
                     image: null,
                 },
             ]
@@ -229,15 +229,15 @@ module.exports = {
             DistroFittingTargets: [
                 {
                     id: 3,
-                    bottom: "68.5%",
-                    left: "70.8%",
+                    bottom: "42%",
+                    left: "54.2%",
                     transform: "rotate(180deg)",
                     image: null,
                 },
                 {
                     id: 4,
-                    bottom: "61.9%",
-                    left: "70.8%",
+                    bottom: "33.7%",
+                    left: "54.2%",
                     transform: "none",
                     image: null,
                 },
@@ -258,15 +258,15 @@ module.exports = {
             CpuFittingTargets: [
                 {
                     id: 0,
-                    bottom: "92.5%",
-                    left: "27.8%",
+                    bottom: "57%",
+                    left: "28.5%",
                     transform: "rotate(270deg)",
                     image: null,
                 },
                 {
                     id: 1,
-                    bottom: "96.3%",
-                    left: "32.8%",
+                    bottom: "57%",
+                    left: "31.5%",
                     transform: "none",
                     image: null,
                 },
@@ -284,8 +284,8 @@ module.exports = {
             CpuFittingTargets: [
                 {
                     id: 0,
-                    bottom: "92.5%",
-                    left: "27.8%",
+                    bottom: "60%",
+                    left: "28.5%",
                     image: null,
                 },
             ]
