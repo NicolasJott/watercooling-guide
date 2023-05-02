@@ -4,7 +4,7 @@ import {useDrop} from "react-dnd";
 import PropTypes from "prop-types";
 import Radiator from "../parts/Radiator";
 
-function RadiatorDiv({ imageUrl, currentStep, onPartDrop}) {
+function RadiatorDiv({ imageUrl, currentStep, onPartDrop, style}) {
     const [image, setImage] = useState(imageUrl)
 
     const [{isOver}, drop] = useDrop(() => ({
@@ -26,7 +26,8 @@ function RadiatorDiv({ imageUrl, currentStep, onPartDrop}) {
         <StyledRadiatorDiv     currentStep={currentStep}
                              style={{
                                  opacity: image ? 1 : '',
-                                 backgroundColor: image ? 'transparent' : ''
+                                 backgroundColor: image ? 'transparent' : '',
+                                     ...style
                              }}
                              ref={drop}>
             {image && <Radiator url={image} alt="fitting" />}
@@ -37,6 +38,7 @@ function RadiatorDiv({ imageUrl, currentStep, onPartDrop}) {
 RadiatorDiv.propTypes = {
     currentStep: PropTypes.object,
     onPartDrop: PropTypes.func,
+    style: PropTypes.object,
 };
 
 export default RadiatorDiv

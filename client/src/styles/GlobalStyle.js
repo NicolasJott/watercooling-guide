@@ -24,6 +24,15 @@ const GlobalStyle = createGlobalStyle`
       overflow-x: hidden;
       font-size: 20px;
       
+      background-color: #FF4500;
+      
+      &.complete {
+        transition: background-color 0.5s ease-in-out;
+        background-color: #2A93D5;
+      }
+      
+      
+      
       
     }
 `

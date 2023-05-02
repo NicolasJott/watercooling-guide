@@ -1,135 +1,66 @@
 import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import {LandingHeader, LandingSection} from "../styled/Landing";
-import {InstallationBox, InstallSection, InstallWrapper} from "../styled/Installation";
+import {
+    InstallationBox,
+    InstallSection,
+    InstallWrapper,
+    StyledInstructionsPage,
+    StyledSelectionItem
+} from "../styled/Installation";
 import sr from "../utils/ScrollReveal";
-import {DistroFittingList, srConfig} from "../config";
+import {DualInstallationSteps, srConfig} from "../config";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import {InstallationSteps} from "../config";
-import CpuDiv from "./dnd/targets/CpuDiv";
-import DistroDiv from "./dnd/targets/DistroDiv";
-import RadiatorDiv from "./dnd/targets/RadiatorDiv";
-import FanDiv from "./dnd/targets/FanDiv";
-import FittingDiv from "./dnd/targets/FittingDiv";
-import Cpu from "./dnd/parts/Cpu";
-import Distro from "./dnd/parts/Distro";
-import Radiator from "./dnd/parts/Radiator";
-import Fan from "./dnd/parts/Fan";
-import Fitting from "./dnd/parts/Fitting";
+import {SingleInstallationSteps} from "../config";
+import SingleDragDrop from "./dnd/SingleDragDrop";
+import DualDragDrop from "./dnd/DualDragDrop";
 
-export const PCSide = styled.div`
-  background-image: url('../pcs/empty_pc.png');
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: contain;
-  object-fit: fill;
-  width: 80%;
-  margin-right: 20px;
-`
 
-export const DraggableItems = styled.div`
-  margin-top: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  width: 20%;
-  
-  ul {
-    list-style-type: none;
-  }
-  
-  li {
-    margin-bottom: 20px;
-  }
-`
 
 
 const Installation = () => {
     const revealContainer = useRef(null)
     const [currentStep, setCurrentStep] = useState(0)
-
-    const [cpuSet, setCpuSet] = useState(false)
-    const [distroSet, setDistroSet] = useState(false)
-    const [radiatorSet, setRadiatorSet] = useState(false)
-    const [fanSet, setFanSet] = useState(false)
-    const [flatSet, setFlatSet] = useState(false)
-    const [distroAngleSet, setDistroAngleSet] = useState(false)
-    const [cpuTopAngleSet, setCpuTopAngleSet] = useState(false)
-    const [cpuRightAngleSet, setCpuRightAngleSet] = useState(false)
-
-
-    const [installStep, setInstallStep] = useState(InstallationSteps[0])
-    const [fanStep, setFanStep] = useState(InstallationSteps[3])
+    const [installStep, setInstallStep] = useState(null)
+    const [config, setConfig] = useState(false)
+    const [instructions, setInstructions] = useState(true)
+    const [path, setPath] = useState(null)
+    const [selectionConfig, setSelectionConfig] = useState(null)
     let count = 0
 
+    useEffect(() => {
+        if (selectionConfig && currentStep === 0) {
+            setInstallStep(selectionConfig[currentStep]);
+        }
+    }, [selectionConfig, currentStep]);
+
+
+    function handleConfig(type) {
+
+        switch (type) {
+            case 'single':
+                setSelectionConfig(SingleInstallationSteps)
+                setConfig(!config)
+                break
+            case 'dual':
+                setSelectionConfig(DualInstallationSteps)
+                setConfig(!config)
+                break
+            default:
+                break
+        }
+        setPath(type)
+    }
 
 
 
     function handleStepChange() {
         setCurrentStep(prevStep => prevStep + 1)
-        setInstallStep(InstallationSteps[currentStep + 1])
+        setInstallStep(selectionConfig[currentStep + 1]);
         count = 0
-        console.log(installStep)
     }
 
-    function handlePartDrop(id) {
-        switch (id) {
-            case 'cpu':
-                handleStepChange()
-                setCpuSet(true)
-                break
-            case 'distro':
-                handleStepChange()
-                setDistroSet(true)
-                console.log(currentStep)
-
-                break
-            case 'radiator':
-                setRadiatorSet(true)
-                console.log(currentStep)
-                handleStepChange()
-                break
-            case 'fan':
-                count += 1
-                console.log(count)
-                if (count === 3) {
-                    setFanSet(true)
-                    handleStepChange()
-                }
-                break
-            case 'flat':
-                count += 1
-                console.log(count)
-                if (count === 4) {
-                    setFlatSet(true)
-                    handleStepChange()
-                }
-                break
-            case 'topAngleDistro':
-                count += 1
-                if (count === 2) {
-                    setDistroAngleSet(true)
-                    handleStepChange()
-                }
-                break
-            case 'topAngleCpu':
-                count += 1
-                if (count === 2) {
-                    setCpuTopAngleSet(true)
-                    handleStepChange()
-                }
-                break
-            case 'rightAngleCpu':
-                    setCpuRightAngleSet(true)
-                    handleStepChange()
-                break
-            default:
-                break
-        }
-
-    }
 
 
     useEffect(() => {
@@ -139,111 +70,67 @@ const Installation = () => {
     return(
         <InstallSection id="install" ref={revealContainer}>
             <LandingHeader>
-                <h1>Installation</h1>
+                <h1>Installation
+                    {!instructions && path &&
+                    path === 'single' ? (
+                        <span>: Single Loop System</span>
+                    ) : path === 'dual' && (
+                        <span>: Dual Loop System</span>
+                    )}
+                </h1>
             </LandingHeader>
                 <InstallationBox>
-                    <h1>{installStep.body}</h1>
+                    {!instructions && installStep && (
+                        <h1>{installStep.body}</h1>
+                    )}
                     <InstallWrapper>
+                        {!config && !instructions && (
+                            <>
+                                <StyledSelectionItem onClick={(e) => handleConfig('single')}>
+                                    <img src="../pcs/single_full.png" alt="single loop pc"/>
+                                    <h1>Single Loop System</h1>
+                                    <p>This single loop system consists of one loop that takes care of cooling the CPU.</p>
+                                </StyledSelectionItem>
+                                <StyledSelectionItem onClick={(e) => handleConfig('dual')}>
+                                    <img src="../pcs/dual_full.png" alt="single loop pc"/>
+                                    <h1>Dual Loop System</h1>
+                                    <p>This dual loop system consists of a complete loop with the purpose of water cooling your CPU and GPU for the coolest experience possible.</p>
+                                </StyledSelectionItem>
+                            </>
+                        )}
+                        {instructions && (
+                            <StyledInstructionsPage>
+                                <h1>Instructions</h1>
+                                <p>
+                                    Water-cooling is a popular technique used to cool down PC components that generate a lot of heat, such as the CPU and GPU. To make this process easy and straightforward, an interactive guide has been created. The guide will walk you through all the necessary steps to water-cool your PC effectively.
+                                </p>
+                                <p>
+                                    As you follow the guide, you'll see a right sidebar listing all the required parts. You can use your mouse to drag these parts from the sidebar and drop them onto the corresponding outlined areas on your PC. This interactive method ensures that you won't miss any crucial steps, and it makes the process much more enjoyable and engaging.
+
+                                </p>
+                                <p>
+                                    With this guide, you'll be able to water-cool your PC like a pro. So, take your time, follow the steps carefully, and enjoy the cooling benefits of water-cooling your PC!.
+                                </p>
+                                <a onClick={() => setInstructions(!instructions)}>Continue</a>
+                            </StyledInstructionsPage>
+                        )}
+
                     <DndProvider backend={HTML5Backend}>
-                        <PCSide>
-                            <CpuDiv
-                                currentStep={installStep}
-                                imageUrl={null}
-                                onPartDrop={(e) => handlePartDrop('cpu')}
-                            />
-                            {cpuSet && (
-                                <DistroDiv
-                                    currentStep={installStep}
-                                    imageUrl={null}
-                                    onPartDrop={(e) => handlePartDrop('distro')}
-                                />
-                            )}
-                            {distroSet && (
-                                <RadiatorDiv
-                                    currentStep={installStep}
-                                    imageUrl={null}
-                                    onPartDrop={(e) => handlePartDrop('radiator')}
-                                />
-                            )}
-                            {radiatorSet &&
-                                InstallationSteps[3].FanTargets.map((target) => (
-                                    <FanDiv
-                                        key={target.id}
-                                        currentStep={installStep}
-                                        imageUrl={null}
-                                        style={{ bottom: target.bottom, left: target.left}}
-                                        onPartDrop={(e) => handlePartDrop('fan')}
-                                    />
-                                ))}
-                            {fanSet &&
-                               InstallationSteps[4].DistroFittingTargets.map((target) => (
-                                    <FittingDiv
-                                        key={target.id}
-                                        currentStep={installStep}
-                                        imageUrl={null}
-                                        style={{ bottom: target.bottom, left: target.left}}
-                                        onPartDrop={(e) => handlePartDrop('flat')}
-                                    />
-                                ))}
-                            {flatSet &&
-                                InstallationSteps[5].DistroFittingTargets.map((target) => (
-                                    <FittingDiv
-                                        key={target.id}
-                                        currentStep={installStep}
-                                        imageUrl={null}
-                                        style={{ bottom: target.bottom, left: target.left, transform: target.transform}}
-                                        onPartDrop={(e) => handlePartDrop('topAngleDistro')}
-                                    />
-                                ))}
-                            {distroAngleSet &&
-                                InstallationSteps[6].CpuFittingTargets.map((target) => (
-                                    <FittingDiv
-                                        key={target.id}
-                                        currentStep={installStep}
-                                        imageUrl={null}
-                                        style={{ bottom: target.bottom, left: target.left, transform: target.transform}}
-                                        onPartDrop={(e) => handlePartDrop('topAngleCpu')}
-                                    />
-                                ))}
-                            {cpuTopAngleSet &&
-                                InstallationSteps[7].CpuFittingTargets.map((target) => (
-                                    <FittingDiv
-                                        key={target.id}
-                                        currentStep={installStep}
-                                        imageUrl={null}
-                                        style={{ bottom: target.bottom, left: target.left}}
-                                        onPartDrop={(e) => handlePartDrop('rightAngleCpu')}
-                                    />
-                                ))}
-                        </PCSide>
-                        <DraggableItems>
-                            <ul>
-                                {installStep.pictureList.map(({ id, url }, i) => (
-                                    <li>
-                                        {id === 'cpu' ? (
-                                            <Cpu url={url} id={id} key={i}/>
-                                        ) : id === 'distro' ? (
-                                            <Distro url={url} id={id} key={i}/>
-                                        ) : id === 'radiator' ? (
-                                            <Radiator url={url} id={id} key={i}/>
-                                        ) : id === 'fan' ? (
-                                            <Fan url={url} id={id} />
-                                        ) : id === 'flat' ? (
-                                            <Fitting url={url} id={id} />
-                                        ) : id === 'angleDistro' ? (
-                                            <Fitting url={url} id={id} />
-                                        ) : id === 'angleCPU' ? (
-                                            <Fitting url={url} id={id} />
-                                        ) : id === 'rightCpu' ? (
-                                            <Fitting url={url} id={id} />
-                                        ) : null}
-                                    </li>
-                                ))}
-                            </ul>
-                        </DraggableItems>
+                        {installStep !== null && path === 'single' ? (
+                            <SingleDragDrop count={count} installStep={installStep} handleStepChange={handleStepChange}/>
+                        ) : installStep!== null && path === 'dual' && (
+                            <DualDragDrop count={count} installStep={installStep} handleStepChange={handleStepChange}/>
+                        )}
                     </DndProvider>
             </InstallWrapper>
                 </InstallationBox>
+            {!instructions && installStep &&
+            installStep.description ?
+                installStep.description && (
+                <p>{installStep.description}</p>
+            ) : !instructions && (
+                <p>Select an option to begin</p>
+            )}
         </InstallSection>
     )
 }

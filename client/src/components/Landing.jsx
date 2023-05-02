@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LandingHeaderItem, LandingDiv, LandingHeader, LandingSection} from "../styled/Landing";
+import {LandingHeaderItem, LandingDiv, LandingHeader, LandingSection, LandingImagesDiv} from "../styled/Landing";
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {navDelay} from "../utils";
 import {  landingItems } from "../config";
@@ -23,6 +23,10 @@ const Landing = () => {
     return(
             <LandingSection id="landing" >
                 <LandingDiv>
+                    <LandingImagesDiv>
+                        <img src="../pcs/dual_full.png" alt=""/>
+                        <img src="../pcs/single_full.png" alt=""/>
+                    </LandingImagesDiv>
                             <LandingHeader>
                                 <TransitionGroup component={null}>
                                     {isMounted &&
@@ -37,6 +41,7 @@ const Landing = () => {
                                                 ))}
                                 </TransitionGroup>
                             </LandingHeader>
+
                 </LandingDiv>
             </LandingSection>
     )

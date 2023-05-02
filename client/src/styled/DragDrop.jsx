@@ -1,24 +1,48 @@
 import styled, {css} from "styled-components";
 
+export const PCSide = styled.div`
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain;
+  object-fit: fill;
+`
+
+export const DraggableItems = styled.div`
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 18%;
+  overflow-x: hidden;
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+`
+
 export const StyledCpuDiv = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 20px;
-  background-color: white;
+  background-color: deepskyblue;
   opacity: 30%;
   position: absolute;
-  top: 34%;
-  left: 25%;
+  top: 22%;
+  left: 17%;
 `
 
 export const StyledDistroDiv = styled.div`
   width: 200px;
   height: 500px;
   border-radius: 20px;
-  background-color: white;
+  background-color: deepskyblue;
   opacity: 30%;
   position: absolute;
-  top: 26%;
+  top: 10%;
   left: 52.5%;
 `
 
@@ -26,18 +50,19 @@ export const StyledRadiatorDiv = styled.div`
   width: 775px;
   height: 60px;
   border-radius: 5px;
-  background-color: white;
+  background-color: deepskyblue;
   opacity: 30%;
   position: absolute;
-  bottom: 720px;
-  left: 198px;
+  top: 5%;
+  left: 2.5%;
 `
 
+
 export const StyledFanDiv = styled.div`
-  width: 230px;
+  width: 220px;
   height: 30px;
   border-radius: 5px;
-  background-color: white;
+  background-color: deepskyblue;
   opacity: 30%;
   position: absolute;
 `
@@ -59,17 +84,9 @@ export const StyledFittingDiv = styled.div`
   
 `
 
-export const CpuFittingTargets = [
-    {
-        id: 1,
-        bottom: "82.6%",
-        left: "27.8%",
-        image: null
-    },
-    {
-        id: 2,
-        bottom: "86.3%",
-        left: "32.8%",
-        image: null
-    }
-]
+export const StyledCpuTubingDiv = styled.div`
+    border-radius: 20px;
+    background-color: deepskyblue;
+    opacity: 30%;
+    position: absolute;
+`

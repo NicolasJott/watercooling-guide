@@ -1,4 +1,3 @@
-const {DistrofittingTargets} = require("./styled/DragDrop");
 module.exports = {
 
     navLinks: [
@@ -108,9 +107,10 @@ module.exports = {
 
     ],
 
-    InstallationSteps: [
+    SingleInstallationSteps: [
         {
             body: "Step 1: Install CPU Waterblock",
+            description: "The CPU block sits directly on the cpu. For this example, it is assumed that there is thermal paste pre-applied to the contact point of the Waterblock.",
             pictureList: [
                 {
                     id: 'cpu',
@@ -120,6 +120,7 @@ module.exports = {
         },
         {
             body: "Step 2: Install Distribution Plate and Pump Combo",
+            description: "The Distribution Plate is sort of the heart of the loop. It contains a water pump and acts as a reservoir for any extra coolant that circulates inside the system.",
             pictureList: [
                 {
                     id: 'distro',
@@ -129,6 +130,7 @@ module.exports = {
         },
         {
             body: "Step 3: Install Radiator",
+            description: "The radiator is responsible for dissipating the heat from the coolant that has previously passed through any components high in heat.",
             pictureList: [
                 {
                     id: 'radiator',
@@ -138,6 +140,7 @@ module.exports = {
         },
         {
             body: "Step 4: Install Fans on Radiator",
+            description: "These fans are in a negative configuration, meaning that air inside the system gets expelled out the top of the system. This movement of air also allows the air to pull heat off of the radiators fins.",
             pictureList: [
                 {
                     id: 'fan',
@@ -154,21 +157,22 @@ module.exports = {
             ],
             FanTargets: [
                 {
-                    bottom: "70.5%",
-                    left: "15%",
+                    top: "11.5%",
+                    left: "2.5%",
                 },
                 {
-                    bottom: "70.5%",
-                    left: "31%",
+                    top: "11.5%",
+                    left: "22.5%",
                 },
                 {
-                    bottom: "70.5%",
-                    left: "47%",
+                    top: "11.5%",
+                    left: "42.5%",
                 },
             ]
         },
         {
             body: "Step 5: Install Flat Fittings on Distribution Plate",
+            description: "These fittings will allow for the connection of tubing between the cpu as well as the radiator.",
             pictureList: [
                 {
                     id: 'flat',
@@ -190,32 +194,33 @@ module.exports = {
             DistroFittingTargets: [
                 {
                     id: 3,
-                    bottom: "57%",
-                    left: "54.2%",
+                    bottom: "67.8%",
+                    left: "54.8%",
                     image: null,
                 },
                 {
                     id: 4,
-                    bottom: "53%",
-                    left: "54.2%",
+                    bottom: "62.9%",
+                    left: "54.7%",
                     image: null,
                 },
                 {
                     id: 5,
-                    bottom: "66.7%",
-                    left: "62.8%",
+                    bottom: "80.5%",
+                    left: "66%",
                     image: null,
                 },
                 {
                     id: 6,
-                    bottom: "58%",
-                    left: "62.8%",
+                    bottom: "69%",
+                    left: "66%",
                     image: null,
                 },
             ]
         },
         {
             body: "Step 6: Install 90 Degree Fittings on Distribution Plate",
+            description: "Installing these fittings will ensure that the channels for the distribution plate are not closed off when tubing is connected. The purpose of this is to act as a bridge since we wont be cooling the GPU in this configuration.",
             pictureList: [
                 {
                     id: 'angleDistro',
@@ -229,26 +234,29 @@ module.exports = {
             DistroFittingTargets: [
                 {
                     id: 3,
-                    bottom: "42%",
-                    left: "54.2%",
+                    bottom: "48.4%",
+                    left: "54.7%",
                     transform: "rotate(180deg)",
+                    zIndex: "10",
                     image: null,
                 },
                 {
                     id: 4,
-                    bottom: "33.7%",
-                    left: "54.2%",
+                    bottom: "37.7%",
+                    left: "54.7%",
                     transform: "none",
+                    zIndex: "10",
                     image: null,
                 },
                ]
         },
         {
             body: "Step 7: Install 90 Degree Fittings on Cpu Block",
+            description: "The angled adapter fittings on the CPU Block will allow for an easier tubing configuration.",
             pictureList: [
                 {
                     id: 'angleCPU',
-                    url: '../fittings/top_view_angle_fitting_right.PNG'
+                    url: '../fittings/top_view_angle_fitting_up.PNG'
                 },
                 {
                     id: 'angleCPU',
@@ -258,16 +266,18 @@ module.exports = {
             CpuFittingTargets: [
                 {
                     id: 0,
-                    bottom: "57%",
-                    left: "28.5%",
-                    transform: "rotate(270deg)",
+                    bottom: "66.2%",
+                    left: "21.5%",
+                    transform: "none",
+                    zIndex: "10",
                     image: null,
                 },
                 {
                     id: 1,
-                    bottom: "57%",
-                    left: "31.5%",
-                    transform: "none",
+                    bottom: "66.2%",
+                    left: "25.4%",
+                    transform: "rotate(90deg)",
+                    zIndex: "10",
                     image: null,
                 },
             ]
@@ -275,17 +285,19 @@ module.exports = {
         },
         {
             body: "Step 7: Install 90 Degree Fitting on Cpu Block",
+            description: "This fitting will allow for a parallel tube run",
             pictureList: [
                 {
                     id: 'rightCpu',
-                    url: '../fittings/90_top.png'
+                    url: '../fittings/90_top_right.png'
                 },
             ],
             CpuFittingTargets: [
                 {
                     id: 0,
-                    bottom: "60%",
-                    left: "28.5%",
+                    bottom: "69.2%",
+                    left: "21.5%",
+                    zIndex: "1",
                     image: null,
                 },
             ]
@@ -293,93 +305,564 @@ module.exports = {
         },
         {
             body: "Step 8: Install Tubing for Cpu Block",
+            description: "This tubing will take coolant to and from the cpu by way of the distribution plate.",
             pictureList: [
                 {
-                    id: 1,
+                    id: "cpuTube",
                     url: '../tubing/cpu_top_tube.PNG'
                 },
                 {
-                    id: 2,
+                    id: "cpuTube",
                     url: '../tubing/cpu_bottom_tube.PNG'
                 },
             ],
-        },
-        {
-            body: "Step 9: Install Tubing for Radiator",
-            pictureList: [
+            CpuTubingTargets: [
                 {
-                    id: 1,
-                    url: '../tubing/inner_top_rad_tube.png'
+                    id: 0,
+                    bottom: "68%",
+                    left: "21.5%",
+                    width: "395px",
+                    height: "40px",
+                    zIndex: "1",
+                    image: null,
                 },
                 {
-                    id: 2,
+                    id: 1,
+                    bottom: "63.5%",
+                    left: "23.8%",
+                    width: "365px",
+                    height: "50px",
+                    zIndex: "1",
+                    image: null,
+                },
+            ]
+        },
+        {
+            body: "Step 9: Install Inner Tubing for Radiator",
+            description: "This tube is the first connection between the radiator and the distribution plate.",
+            pictureList: [
+                {
+                    id: 'inner',
+                    url: '../tubing/inner_top_rad_tube.png'
+                },
+            ],
+            TubingTargets: [
+                {
+                    id: 0,
+                    top: "9%",
+                    right: "31.3%",
+                    width: "30px",
+                    height: "80px",
+                    zIndex: "1",
+                },
+            ]
+        },
+        {
+            body: "Step 10: Install Outer Tubing for Radiator",
+            description: "This tube is the second connection between the radiator and the distribution plate.",
+            pictureList: [
+                {
+                    id: 'outer',
                     url: '../tubing/outer_top_rad_tube.png'
                 },
             ],
+            TubingTargets: [
+                {
+                    id: 0,
+                    top: "11%",
+                    right: "31.3%",
+                    width: "30px",
+                    height: "150px",
+                    zIndex: "1",
+                },
+            ]
         },
         {
-            body: "Step 10: Install Tubing Bridge for Distribution Plate",
+            body: "Step 11: Install Tubing Bridge for Distribution Plate",
+            description: "As stated previously, this tube is essential for bridging the channels of the distribution plate since there is no GPU configuration.",
             pictureList: [
                 {
-                    id: 1,
-                    url: '../tubing/inner_top_rad_tube.png'
+                    id: 'distroTube',
+                    url: '../tubing/distro_bridge_tube.png'
+                },
+            ],
+            TubingTargets: [
+                {
+                    id: 0,
+                    bottom: "40%",
+                    left: "54.7%",
+                    width: "28px",
+                    height: "90px",
+                    zIndex: "1",
+                },
+            ]
+        },
+        {
+            body: "Step 12: Fill System With Coolant",
+            description: "Click on the coolant bottle to fill the loop!",
+            pictureList: [
+                {
+                    id: 'coolant',
+                    url: '../misc/coolant.png'
+                },
+                ],
+        },
+        {
+            body: "Congratulations! You have completed the build!",
+            description: "Your pc now has a custom water-cooling loop. Your temps will now be lower than ever!",
+            pictureList: [
+                {
+                    id: 'coolant',
+                    url: '../misc/coolant.png'
+                },
+            ],
+        },
+    ],
+
+    DualInstallationSteps: [
+        {
+            body: "Step 1: Install CPU Waterblock",
+            description: "The CPU block sits directly on the cpu. For this example, it is assumed that there is thermal paste pre-applied to the contact point of the Waterblock.",
+            pictureList: [
+                {
+                    id: 'cpu',
+                    url: '../waterblocks/CPU_Block.png'
                 },
             ],
         },
         {
-            body: "Step 11: Test For Leaks"
+            body: "Step 2: Install Distribution Plate and Pump Combo",
+            description: "The Distribution Plate is sort of the heart of the loop. It contains a water pump and acts as a reservoir for any extra coolant that circulates inside the system.",
+            pictureList: [
+                {
+                    id: 'distro',
+                    url: '../waterblocks/Distro_double_rad.png'
+                },
+            ],
         },
         {
-            body: "Step 12: Fill System With Coolant"
+            body: "Step 3: Install Radiator",
+            description: "The radiator is responsible for dissipating the heat from the coolant that has previously passed through any components high in heat.",
+            pictureList: [
+                {
+                    id: 'radiator',
+                    url: '../radiators/Radiator.png'
+                },
+                {
+                    id: 'radiator',
+                    url: '../radiators/Radiator.png'
+                },
+            ],
+            RadiatorTargets: [
+                {
+                    top: "5%",
+                    left: "2.5%",
+                },
+                {
+                    top: "81%",
+                    left: "2.5%",
+                },
+            ]
+        },
+        {
+            body: "Step 4: Install Fans on Radiator",
+            description: "These fans are in a negative configuration, meaning that air inside the system gets expelled out the top of the system. This movement of air also allows the air to pull heat off of the radiators fins.",
+            pictureList: [
+                {
+                    id: 'fan',
+                    url: '../fans/Fan.png'
+                },
+                {
+                    id: 'fan',
+                    url: '../fans/Fan.png'
+                },
+                {
+                    id: 'fan',
+                    url: '../fans/Fan.png'
+                },
+                {
+                    id: 'fan',
+                    url: '../fans/Fan.png'
+                },
+                {
+                    id: 'fan',
+                    url: '../fans/Fan.png'
+                },
+                {
+                    id: 'fan',
+                    url: '../fans/Fan.png'
+                },
+            ],
+            FanTargets: [
+                {
+                    top: "11.5%",
+                    left: "2.5%",
+                },
+                {
+                    top: "11.5%",
+                    left: "22.5%",
+                },
+                {
+                    top: "11.5%",
+                    left: "42.5%",
+                },
+                {
+                    top: "76%",
+                    left: "2.5%",
+                },
+                {
+                    top: "76%",
+                    left: "22.5%",
+                },
+                {
+                    top: "76%",
+                    left: "42.5%",
+                },
+            ]
+        },
+        {
+            body: "Step 5: Install Flat Fittings on Distribution Plate",
+            description: "These fittings will allow for the connection of tubing between the cpu as well as the radiator.",
+            pictureList: [
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+                {
+                    id: 'flat',
+                    url: '../fittings/fitting.png'
+                },
+            ],
+            DistroFittingTargets: [
+                {
+                    id: 1,
+                    bottom: "67.8%",
+                    left: "54.7%",
+                    image: null,
+                },
+                {
+                    id: 2,
+                    bottom: "62.9%",
+                    left: "54.7%",
+                    image: null,
+                },
+                {
+                    id: 3,
+                    bottom: "80.5%",
+                    left: "66%",
+                    image: null,
+                },
+                {
+                    id: 4,
+                    bottom: "69%",
+                    left: "66%",
+                    image: null,
+                },
+                {
+                    id: 5,
+                    bottom: "48.4%",
+                    left: "54.7%",
+                    image: null,
+                },
+                {
+                    id: 6,
+                    bottom: "37.5%",
+                    left: "54.7%",
+                    image: null,
+                },
+                {
+                    id: 7,
+                    bottom: "38.4%",
+                    left: "66.3%",
+                    image: null,
+                },
+                {
+                    id: 8,
+                    bottom: "33.2%",
+                    left: "66.3%",
+                    image: null,
+                },
+            ]
+        },
+        {
+            body: "Step 6: Install 90 Degree Fittings on Cpu Block",
+            description: "The angled adapter fittings on the CPU Block will allow for an easier tubing configuration.",
+            pictureList: [
+                {
+                    id: 'angleCPU',
+                    url: '../fittings/top_view_angle_fitting_up.PNG'
+                },
+                {
+                    id: 'angleCPU',
+                    url: '../fittings/top_view_angle_fitting_up.PNG'
+                },
+            ],
+            CpuFittingTargets: [
+                {
+                    id: 0,
+                    bottom: "66.2%",
+                    left: "21.5%",
+                    transform: "none",
+                    zIndex: "10",
+                    image: null,
+                },
+                {
+                    id: 1,
+                    bottom: "66.2%",
+                    left: "25.4%",
+                    transform: "rotate(90deg)",
+                    zIndex: "10",
+                    image: null,
+                },
+            ]
+
+        },
+        {
+            body: "Step 6: Install 90 Degree Fitting on Cpu Block",
+            description: "This fitting will allow for a parallel tube run",
+            pictureList: [
+                {
+                    id: 'rightCpu',
+                    url: '../fittings/90_top_right.png'
+                },
+            ],
+            CpuFittingTargets: [
+                {
+                    id: 0,
+                    bottom: "69.2%",
+                    left: "21.5%",
+                    zIndex: "1",
+                    image: null,
+                },
+            ]
+        },
+        {
+            body: "Step 7: Install 90 Degree Fittings on GPU Block",
+            description: "The angled adapter fittings on the GPU Block will allow for an easier tubing configuration.",
+            pictureList: [
+                {
+                    id: 'angleGPU',
+                    url: '../fittings/90_top_right.png'
+                },
+                {
+                    id: 'angleGPU',
+                    url: '../fittings/90_right.png'
+                },
+            ],
+            FittingTargets: [
+                {
+                    id: 0,
+                    bottom: "66.2%",
+                    left: "21.5%",
+                    transform: "none",
+                    zIndex: "10",
+                    image: null,
+                },
+                {
+                    id: 1,
+                    bottom: "66.2%",
+                    left: "25.4%",
+                    transform: "rotate(90deg)",
+                    zIndex: "10",
+                    image: null,
+                },
+            ]
+
+        },
+        {
+            body: "Step 8: Install Tubing for Cpu Block",
+            description: "This tubing will take coolant to and from the cpu by way of the distribution plate.",
+            pictureList: [
+                {
+                    id: "cpuTube",
+                    url: '../tubing/cpu_top_tube.PNG'
+                },
+                {
+                    id: "cpuTube",
+                    url: '../tubing/cpu_bottom_tube.PNG'
+                },
+            ],
+            CpuTubingTargets: [
+                {
+                    id: 0,
+                    bottom: "68%",
+                    left: "21.5%",
+                    width: "395px",
+                    height: "40px",
+                    zIndex: "1",
+                    image: null,
+                },
+                {
+                    id: 1,
+                    bottom: "63.5%",
+                    left: "23.8%",
+                    width: "365px",
+                    height: "50px",
+                    zIndex: "1",
+                    image: null,
+                },
+            ]
+        },
+        {
+            body: "Step 9: Install Tubing for GPU Block",
+            description: "This tubing will take coolant to and from the cpu by way of the distribution plate.",
+            pictureList: [
+                {
+                    id: "cpuTube",
+                    url: '../tubing/top_gpu_tube.PNG'
+                },
+                {
+                    id: "cpuTube",
+                    url: '../tubing/bottom_gpu_tube.PNG'
+                },
+            ],
+            CpuTubingTargets: [
+                {
+                    id: 0,
+                    bottom: "68%",
+                    left: "21.5%",
+                    width: "395px",
+                    height: "40px",
+                    zIndex: "1",
+                    image: null,
+                },
+                {
+                    id: 1,
+                    bottom: "63.5%",
+                    left: "23.8%",
+                    width: "365px",
+                    height: "50px",
+                    zIndex: "1",
+                    image: null,
+                },
+            ]
+        },
+        {
+            body: "Step 10: Install Inner Tubing for the top Radiator",
+            description: "This tube is the first connection between the radiator and the distribution plate.",
+            pictureList: [
+                {
+                    id: 'inner',
+                    url: '../tubing/inner_top_rad_tube.png'
+                },
+            ],
+            TubingTargets: [
+                {
+                    id: 0,
+                    top: "9%",
+                    right: "31.3%",
+                    width: "30px",
+                    height: "80px",
+                    zIndex: "1",
+                },
+            ]
+        },
+        {
+            body: "Step 11: Install Outer Tubing for top Radiator",
+            description: "This tube is the second connection between the radiator and the distribution plate.",
+            pictureList: [
+                {
+                    id: 'outer',
+                    url: '../tubing/outer_top_rad_tube.png'
+                },
+            ],
+            TubingTargets: [
+                {
+                    id: 0,
+                    top: "11%",
+                    right: "31.3%",
+                    width: "30px",
+                    height: "150px",
+                    zIndex: "1",
+                },
+            ]
+        },
+        {
+            body: "Step 12: Install Inner Tubing for the bottom Radiator",
+            description: "This tube is the first connection between the radiator and the distribution plate.",
+            pictureList: [
+                {
+                    id: 'inner',
+                    url: '../tubing/inner_bottom_rad_tube.png'
+                },
+            ],
+            TubingTargets: [
+                {
+                    id: 0,
+                    top: "9%",
+                    right: "31.3%",
+                    width: "30px",
+                    height: "80px",
+                    zIndex: "1",
+                },
+            ]
+        },
+        {
+            body: "Step 13: Install outer Tubing for the bottom Radiator",
+            description: "This tube is the first connection between the radiator and the distribution plate.",
+            pictureList: [
+                {
+                    id: 'inner',
+                    url: '../tubing/outer_bottom_rad_tube.png'
+                },
+            ],
+            TubingTargets: [
+                {
+                    id: 0,
+                    top: "9%",
+                    right: "31.3%",
+                    width: "30px",
+                    height: "80px",
+                    zIndex: "1",
+                },
+            ]
+        },
+        {
+            body: "Step 14: Fill System With Coolant",
+            description: "Click on the coolant bottle to fill the loop!",
+            pictureList: [
+                {
+                    id: 'coolant',
+                    url: '../misc/coolant.png'
+                },
+            ],
+        },
+        {
+            body: "Congratulations! You have completed the build!",
+            description: "Your pc now has a custom water-cooling loop. Your temps will now be lower than ever!",
+            pictureList: [
+                {
+                    id: 'coolant',
+                    url: '../misc/coolant.png'
+                },
+            ],
         },
     ],
 
-    CPUList: [
-        {
-            id: 'cpu',
-            url: '../waterblocks/CPU_Block.png'
-        },
-    ],
-
-    CpuFittingList1: [
-        {
-            id: '90right',
-            url: '../fittings/90_right.png'
-        },
-    ],
-
-    DistroList: [
-        {
-            id: 'distro',
-            url: '../waterblocks/Distro_single_rad.png'
-        }
-    ],
-
-    RadiatorList: [
-        {
-            id: 'radiator',
-            url: '../radiators/rad_drag.png'
-        }
-    ],
-
-    DistroFittingList: [
-        {
-            id: 1,
-            url: '../fittings/fitting.png'
-        },
-        {
-            id: 2,
-            url: '../fittings/fitting.png'
-        },
-        {
-            id: 3,
-            url: '../fittings/fitting.png'
-        },
-        {
-            id: 4,
-            url: '../fittings/fitting.png'
-        },
-    ],
 
 
     srConfig: (delay = 200, viewFactor = 0.25) => ({

@@ -1,9 +1,9 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 
-function Cpu({id, url}) {
+function Tubing({id, url}) {
     const [{isDragging}, drag] = useDrag(() => ({
-        type: "cpu",
+        type: "tubing",
         item: {id: id},
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging(),
@@ -14,8 +14,10 @@ function Cpu({id, url}) {
             ref={drag}
             src={url}
             width="100%"
+            height="100%"
             style={{ transform: 'translate(0, 0)', cursor: isDragging ? 'pointer' : ''}}
         />
     )
 }
-export default Cpu
+export default Tubing
+

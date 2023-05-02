@@ -42,11 +42,30 @@ export const LandingSection = styled.section`
   }
 `
 
+export const LandingImagesDiv = styled.div`
+    display: flex;
+    
+    img {
+        width: 500px;
+        margin: 100px;
+    }
+    
+    @media (max-width: 820px) {
+        flex-direction: column;
+    
+    img {
+        width: 300px;
+        margin: 50px;
+    }
+  }
+`
+
+
 export const LandingDiv = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 0;
 `
 

@@ -13,7 +13,7 @@ function Fan({id, url}) {
         <img
             ref={drag}
             src={url}
-            width="150px"
+            width="100px"
             style={{ transform: 'translate(0, 0)', cursor: isDragging ? 'pointer' : ''}}
         />
     )

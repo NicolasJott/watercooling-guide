@@ -13,7 +13,7 @@ function Distro({id, url}) {
         <img
             ref={drag}
             src={url}
-            width="200px"
+            width="100%"
             style={{ transform: 'translate(0, 0)', cursor: isDragging ? 'pointer' : ''}}
         />
     )

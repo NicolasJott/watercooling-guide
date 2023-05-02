@@ -8,6 +8,11 @@ export const InstallSection = styled.section`
   align-items: center;
   text-align: left;
   margin-top: 200px;
+  transition: var(--transition);
+  
+  p {
+    color: white;
+  }
 `
 export const InstallationBox = styled.div`
   display: flex;
@@ -36,6 +41,90 @@ export const InstallWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
   
  
+`
+
+export const StyledSelectionItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 48%;
+    border: 2px solid #FF4500;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    
+    h1 {
+        margin: 20px;
+        font-size: 50px
+    }
+    
+    img {
+        margin: 50px;
+        width: 300px;
+   }
+   
+   p {
+    margin: 20px;
+    color: black;
+    font-size: 26px;
+   }
+   
+   &:hover {
+    background-color: #FF8000;
+    
+    h1 {
+        color: white
+    }
+    
+    p {
+        color: white
+    }
+   }
+`
+
+export const StyledInstructionsPage = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 100px;
+    
+    h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    
+    p {
+        font-size: 22px;
+        color: black;
+        line-height: 1.5;
+    }
+    
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        height: 80px;
+        width: 400px;
+        background-color: #FF4500;
+        border-radius: 20px;
+        color: white;
+        transition: var(--transition);
+        cursor: pointer;
+        
+        &:hover {
+            background-color: #FF8000;
+        }
+    }
+    
+    
 `
