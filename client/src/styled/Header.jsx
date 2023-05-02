@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -13,6 +13,15 @@ export const HeaderContainer = styled.header`
   pointer-events: auto !important;
   user-select: auto !important;
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  ${props =>
+          props.scrollDirection === 'down' &&
+          !props.scrolledToTop &&
+          css`
+        height: var(--nav-scroll-height);
+        transform: translateY(calc(var(--nav-scroll-height) * -1));
+        box-shadow: 0 10px 30px -10px var(--navy-shadow);
+      `};
 
   @media (max-width: 768px) {
     padding: 0 40px;

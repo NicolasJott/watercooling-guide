@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
       overflow-x: hidden;
       font-size: 20px;
       
-      background-color: #FF4500;
+      background-color: #F99244;
       
       &.complete {
         transition: background-color 0.5s ease-in-out;

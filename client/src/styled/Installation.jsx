@@ -52,7 +52,7 @@ export const StyledSelectionItem = styled.div`
     align-items: center;
     height: 100%;
     width: 48%;
-    border: 2px solid #FF4500;
+    border: 2px solid var(--royal-orange);
     border-radius: 20px;
     text-align: center;
     padding: 10px;
@@ -76,7 +76,7 @@ export const StyledSelectionItem = styled.div`
    }
    
    &:hover {
-    background-color: #FF8000;
+    background-color: var(--royal-orange);
     
     h1 {
         color: white
@@ -115,7 +115,7 @@ export const StyledInstructionsPage = styled.div`
         text-decoration: none;
         height: 80px;
         width: 400px;
-        background-color: #FF4500;
+        background-color: var(--royal-orange);
         border-radius: 20px;
         color: white;
         transition: var(--transition);

@@ -56,7 +56,6 @@ export const GettingStartedHeaderItem = styled.div`
     justify-content: space-between;
 
     span {
-      color: var(--light-yellow-1);
       font-size: 28px;
       font-weight: 700;
     }
