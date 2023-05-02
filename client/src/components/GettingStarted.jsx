@@ -41,8 +41,8 @@ const GettingStarted = () => {
                             <TransitionGroup component={null}>
                                 {isMounted && (
                                     <CSSTransition classNames={fadeUp} timeout={timeout}>
-                                        <p>When it comes to choosing components for your water-cooling setup, there are several factors to consider,
-                                            including compatibility, performance, and budget. Here are some tips to help you make the right choices:</p>
+                                        <p>When going for the custom loop, you choose every component yourself. You get unlimited customization options and the best performance.
+                                            The first step is to decide which components you want to liquid cool, usually we start with the CPU and continue from there. CPU and GPU loops are one step further, but you can always continue to add more components to the loop.</p>
                                     </CSSTransition>
                                 )}
                             </TransitionGroup>
@@ -61,6 +61,15 @@ const GettingStarted = () => {
                                 }
                                 </TransitionGroup>
                             </ul>
+                            <TransitionGroup component={null}>
+                                {isMounted && (
+                                    <CSSTransition classNames={fadeUp} timeout={timeout}>
+                                        <p style={{ transitionDelay: `${gettingStartedItems ? gettingStartedItems.length * 100 : 1000}ms`, fontSize: '14px'}}>
+                                            “Custom Loop - EKWB.” Ekwb.Com, 18 Aug. 2021, <a href="www.ekwb.com/solutions/custom-loop/#needed-components">www.ekwb.com/solutions/custom-loop/#needed-components.</a>
+                                        </p>
+                                    </CSSTransition>
+                                )}
+                            </TransitionGroup>
                             <TransitionGroup component={null}>
                                 {isMounted && (
                                     <CSSTransition classNames={fadeUp} timeout={timeout}>

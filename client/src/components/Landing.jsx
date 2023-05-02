@@ -35,7 +35,16 @@ const Landing = () => {
                                                     <CSSTransition key={i} classNames={fadeUp} timeout={timeout}>
                                                         <LandingHeaderItem key={i} style={{ transitionDelay: `${i * 100}ms` }}>
                                                             <h2>{header}</h2>
-                                                            <p>{body}</p>
+                                                            <p>
+                                                                {body.includes("EKWB") ?
+                                                                body.split(' ').map((word, j) => (
+                                                                    word === 'EKWB' ?
+                                                                        <a key={`${i} - ${j}`} href="https://www.ekwb.com/">EKWB </a> :
+                                                                        <>{word} </>
+                                                                )) :
+                                                                    body
+                                                                }
+                                                            </p>
                                                         </LandingHeaderItem>
                                                     </CSSTransition>
                                                 ))}
