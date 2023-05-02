@@ -670,13 +670,13 @@ module.exports = {
                 },
                 {
                     id: 'angleGPU',
-                    url: '../fittings/90_right.png'
+                    url: '../fittings/90_bottom.png'
                 },
             ],
             FittingTargets: [
                 {
                     id: 0,
-                    bottom: "66.2%",
+                    bottom: "50.2%",
                     left: "21.5%",
                     transform: "none",
                     zIndex: "10",
@@ -684,9 +684,9 @@ module.exports = {
                 },
                 {
                     id: 1,
-                    bottom: "66.2%",
+                    bottom: "40.2%",
                     left: "25.4%",
-                    transform: "rotate(90deg)",
+                    transform: "scaleY(-1)",
                     zIndex: "10",
                     image: null,
                 },
