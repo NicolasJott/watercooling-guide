@@ -130,7 +130,7 @@ module.exports = {
         },
         {
             body: "Step 3: Install Radiator",
-            description: "The radiator is responsible for dissipating the heat from the coolant that has previously passed through any components high in heat.",
+            description: "The radiator is responsible for dissipating the heat from the coolant that has previously passed through any components high in heat. Assume that fittings have already been installed on the radiator.",
             pictureList: [
                 {
                     id: 'radiator',
@@ -409,7 +409,7 @@ module.exports = {
         },
         {
             body: "Congratulations! You have completed the build!",
-            description: "Your pc now has a custom water-cooling loop. Your temps will now be lower than ever!",
+            description: "Your pc now has a single custom water-cooling loop. Your temps will now be lower than ever!",
             pictureList: [
                 {
                     id: 'coolant',
@@ -441,8 +441,8 @@ module.exports = {
             ],
         },
         {
-            body: "Step 3: Install Radiator",
-            description: "The radiator is responsible for dissipating the heat from the coolant that has previously passed through any components high in heat.",
+            body: "Step 3: Install Radiators",
+            description: "The radiators are responsible for dissipating the heat from the coolant that has previously passed through any components high in heat. Assume that fittings have already been installed on the radiators.",
             pictureList: [
                 {
                     id: 'radiator',
@@ -465,8 +465,10 @@ module.exports = {
             ]
         },
         {
-            body: "Step 4: Install Fans on Radiator",
-            description: "These fans are in a negative configuration, meaning that air inside the system gets expelled out the top of the system. This movement of air also allows the air to pull heat off of the radiators fins.",
+            body: "Step 4: Install Fans on Radiators",
+            description: "The top fans are in a negative configuration, meaning that air inside the system gets expelled out the top of the system. This movement of air also allows the air to pull heat off of the radiators fins." +
+                " The bottom fans are in a positive configuration, meaning that the fans pull in fresh air from underneath the system. This benefits the cooling performance because fresh, cool air is being used to pull heat off of the radiator fins." +
+                " The top and bottom fans work nicely together to pull air into the system from the bottom and out of the system from the top.",
             pictureList: [
                 {
                     id: 'fan',
@@ -522,7 +524,7 @@ module.exports = {
         },
         {
             body: "Step 5: Install Flat Fittings on Distribution Plate",
-            description: "These fittings will allow for the connection of tubing between the cpu as well as the radiator.",
+            description: "These fittings will allow for the connection of tubing between the cpu, gpu as well as both radiators.",
             pictureList: [
                 {
                     id: 'flat',
@@ -670,22 +672,22 @@ module.exports = {
                 },
                 {
                     id: 'angleGPU',
-                    url: '../fittings/90_bottom.png'
+                    url: '../fittings/90_top_right.png'
                 },
             ],
             FittingTargets: [
                 {
                     id: 0,
-                    bottom: "50.2%",
-                    left: "21.5%",
+                    bottom: "48.9%",
+                    left: "18.3%",
                     transform: "none",
                     zIndex: "10",
                     image: null,
                 },
                 {
                     id: 1,
-                    bottom: "40.2%",
-                    left: "25.4%",
+                    bottom: "36.9%",
+                    left: "24.2%",
                     transform: "scaleY(-1)",
                     zIndex: "10",
                     image: null,
@@ -729,33 +731,33 @@ module.exports = {
         },
         {
             body: "Step 9: Install Tubing for GPU Block",
-            description: "This tubing will take coolant to and from the cpu by way of the distribution plate.",
+            description: "This tubing will take coolant to and from the gpu by way of the distribution plate.",
             pictureList: [
                 {
-                    id: "cpuTube",
+                    id: "gpuTube",
                     url: '../tubing/top_gpu_tube.PNG'
                 },
                 {
-                    id: "cpuTube",
+                    id: "gpuTube",
                     url: '../tubing/bottom_gpu_tube.PNG'
                 },
             ],
-            CpuTubingTargets: [
+            TubingTargets: [
                 {
                     id: 0,
-                    bottom: "68%",
-                    left: "21.5%",
-                    width: "395px",
-                    height: "40px",
+                    bottom: "49%",
+                    left: "20.5%",
+                    width: "404px",
+                    height: "30px",
                     zIndex: "1",
                     image: null,
                 },
                 {
                     id: 1,
-                    bottom: "63.5%",
-                    left: "23.8%",
-                    width: "365px",
-                    height: "50px",
+                    bottom: "37.5%",
+                    left: "24.8%",
+                    width: "354px",
+                    height: "30px",
                     zIndex: "1",
                     image: null,
                 },
@@ -763,7 +765,7 @@ module.exports = {
         },
         {
             body: "Step 10: Install Inner Tubing for the top Radiator",
-            description: "This tube is the first connection between the radiator and the distribution plate.",
+            description: "This tube is the first connection between the top radiator and the distribution plate.",
             pictureList: [
                 {
                     id: 'inner',
@@ -783,7 +785,7 @@ module.exports = {
         },
         {
             body: "Step 11: Install Outer Tubing for top Radiator",
-            description: "This tube is the second connection between the radiator and the distribution plate.",
+            description: "This tube is the second connection between the top radiator and the distribution plate.",
             pictureList: [
                 {
                     id: 'outer',
@@ -803,40 +805,40 @@ module.exports = {
         },
         {
             body: "Step 12: Install Inner Tubing for the bottom Radiator",
-            description: "This tube is the first connection between the radiator and the distribution plate.",
+            description: "This tube is the first connection between the bottom radiator and the distribution plate.",
             pictureList: [
                 {
-                    id: 'inner',
+                    id: 'innerBottom',
                     url: '../tubing/inner_bottom_rad_tube.png'
                 },
             ],
             TubingTargets: [
                 {
                     id: 0,
-                    top: "9%",
-                    right: "31.3%",
+                    bottom: "17%",
+                    left: "66.3%",
                     width: "30px",
-                    height: "80px",
+                    height: "150px",
                     zIndex: "1",
                 },
             ]
         },
         {
             body: "Step 13: Install outer Tubing for the bottom Radiator",
-            description: "This tube is the first connection between the radiator and the distribution plate.",
+            description: "This tube is the second connection between the bottom radiator and the distribution plate.",
             pictureList: [
                 {
-                    id: 'inner',
+                    id: 'outerBottom',
                     url: '../tubing/outer_bottom_rad_tube.png'
                 },
             ],
             TubingTargets: [
                 {
                     id: 0,
-                    top: "9%",
-                    right: "31.3%",
+                    bottom: "17%",
+                    left: "66.3%",
                     width: "30px",
-                    height: "80px",
+                    height: "193px",
                     zIndex: "1",
                 },
             ]
@@ -853,7 +855,7 @@ module.exports = {
         },
         {
             body: "Congratulations! You have completed the build!",
-            description: "Your pc now has a custom water-cooling loop. Your temps will now be lower than ever!",
+            description: "Your pc now has a dual custom water-cooling loop. Your temps will now be lower than ever!",
             pictureList: [
                 {
                     id: 'coolant',

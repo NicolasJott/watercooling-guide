@@ -28,7 +28,7 @@ export const StyledCpuDiv = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 20px;
-  background-color: deepskyblue;
+  background-color: orange;
   opacity: 30%;
   position: absolute;
   top: 22%;
@@ -39,7 +39,7 @@ export const StyledDistroDiv = styled.div`
   width: 200px;
   height: 500px;
   border-radius: 20px;
-  background-color: deepskyblue;
+  background-color: orange;
   opacity: 30%;
   position: absolute;
   top: 10%;
@@ -50,7 +50,7 @@ export const StyledRadiatorDiv = styled.div`
   width: 775px;
   height: 60px;
   border-radius: 5px;
-  background-color: deepskyblue;
+  background-color: orange;
   opacity: 30%;
   position: absolute;
   top: 5%;
@@ -62,7 +62,7 @@ export const StyledFanDiv = styled.div`
   width: 220px;
   height: 30px;
   border-radius: 5px;
-  background-color: deepskyblue;
+  background-color: orange;
   opacity: 30%;
   position: absolute;
 `
@@ -71,7 +71,7 @@ export const StyledFittingDiv = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: deepskyblue;
+  background-color: orange;
   opacity: 30%;
   position: absolute;
 
@@ -86,7 +86,7 @@ export const StyledFittingDiv = styled.div`
 
 export const StyledCpuTubingDiv = styled.div`
     border-radius: 20px;
-    background-color: deepskyblue;
+    background-color: orange;
     opacity: 30%;
     position: absolute;
 `

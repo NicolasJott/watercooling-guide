@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import styled from "styled-components";
-import {LandingHeader, LandingSection} from "../styled/Landing";
+import {LandingHeader} from "../styled/Landing";
 import {
     InstallationBox,
     InstallSection,

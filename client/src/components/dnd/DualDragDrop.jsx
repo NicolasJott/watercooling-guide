@@ -36,9 +36,11 @@ function DualDragDrop({count, installStep, handleStepChange}) {
     const [cpuRightAngleSet, setCpuRightAngleSet] = useState(false)
     const [gpuFittingsSet, setGpuFittingsSet] = useState(false)
     const [cpuTubingSet, setCpuTubingSet] = useState(false)
+    const [gpuTubingSet, setGpuTubingSet] = useState(false)
     const [innerTubingSet, setInnerTubingSet] = useState(false)
     const [outerTubingSet, setOuterTubingSet] = useState(false)
-    const [distroTubeSet, setDistroTubeSet] = useState(false)
+    const [innerBottomSet, setInnerBottomSet] = useState(false)
+    const [outerBottomSet, setOuterBottomSet] = useState(false)
 
     const [complete, setComplete] = useState(false)
 
@@ -98,6 +100,7 @@ function DualDragDrop({count, installStep, handleStepChange}) {
                 break
             case 'gpuFittings':
                 count += 1
+                setStepPictures(prevList => prevList.slice(0,-1))
                 if (count === 2) {
                     setGpuFittingsSet(true)
                     handleStepChange()
@@ -111,16 +114,28 @@ function DualDragDrop({count, installStep, handleStepChange}) {
                     handleStepChange()
                 }
                 break
-            case 'inner':
+            case 'gpuTubing':
+                count += 1
+                setStepPictures(prevList => prevList.slice(0,-1))
+                if (count === 2) {
+                    setGpuTubingSet(true)
+                    handleStepChange()
+                }
+                break
+            case 'innerTop':
                 setInnerTubingSet(true)
                 handleStepChange()
                 break
-            case 'outer':
+            case 'outerTop':
                 setOuterTubingSet(true)
                 handleStepChange()
                 break
-            case 'distroTube':
-                setDistroTubeSet(true)
+            case 'innerBottom':
+                setInnerBottomSet(true)
+                handleStepChange()
+                break
+            case 'outerBottom':
+                setOuterBottomSet(true)
                 handleStepChange()
                 break
             default:
@@ -130,7 +145,7 @@ function DualDragDrop({count, installStep, handleStepChange}) {
     }
 
     const handleCoolantClick = () => {
-        setBackgroundImage('../pcs/single_full.png')
+        setBackgroundImage('../pcs/dual_full.png')
         setWidth('100%')
         setMarginRight('0')
         setMarginTop('20px')
@@ -233,17 +248,17 @@ function DualDragDrop({count, installStep, handleStepChange}) {
                                 />
                             ))}
                         {cpuTubingSet &&
-                            DualInstallationSteps[8].TubingTargets.map((target) => (
+                            DualInstallationSteps[9].TubingTargets.map((target) => (
                                 <CpuTubingDiv
                                     key={target.id}
                                     id={target.id}
                                     currentStep={installStep}
                                     imageUrl={null}
-                                    style={{ top: target.top, right: target.right, width: target.width, height: target.height}}
-                                    onPartDrop={(e) => handlePartDrop('inner')}
+                                    style={{ bottom: target.bottom, left: target.left, width: target.width, height: target.height}}
+                                    onPartDrop={(e) => handlePartDrop('gpuTubing')}
                                 />
                             ))}
-                        {innerTubingSet &&
+                        {gpuTubingSet &&
                             DualInstallationSteps[10].TubingTargets.map((target) => (
                                 <CpuTubingDiv
                                     key={target.id}
@@ -251,18 +266,40 @@ function DualDragDrop({count, installStep, handleStepChange}) {
                                     currentStep={installStep}
                                     imageUrl={null}
                                     style={{ top: target.top, right: target.right, width: target.width, height: target.height}}
-                                    onPartDrop={(e) => handlePartDrop('outer')}
+                                    onPartDrop={(e) => handlePartDrop('innerTop')}
                                 />
                             ))}
-                        {outerTubingSet &&
+                        {innerTubingSet &&
                             DualInstallationSteps[11].TubingTargets.map((target) => (
                                 <CpuTubingDiv
                                     key={target.id}
                                     id={target.id}
                                     currentStep={installStep}
                                     imageUrl={null}
+                                    style={{ top: target.top, right: target.right, width: target.width, height: target.height}}
+                                    onPartDrop={(e) => handlePartDrop('outerTop')}
+                                />
+                            ))}
+                        {outerTubingSet &&
+                            DualInstallationSteps[12].TubingTargets.map((target) => (
+                                <CpuTubingDiv
+                                    key={target.id}
+                                    id={target.id}
+                                    currentStep={installStep}
+                                    imageUrl={null}
                                     style={{ bottom: target.bottom, left: target.left, width: target.width, height: target.height}}
-                                    onPartDrop={(e) => handlePartDrop('distroTube')}
+                                    onPartDrop={(e) => handlePartDrop('innerBottom')}
+                                />
+                            ))}
+                        {innerBottomSet &&
+                            DualInstallationSteps[13].TubingTargets.map((target) => (
+                                <CpuTubingDiv
+                                    key={target.id}
+                                    id={target.id}
+                                    currentStep={installStep}
+                                    imageUrl={null}
+                                    style={{ bottom: target.bottom, left: target.left, width: target.width, height: target.height}}
+                                    onPartDrop={(e) => handlePartDrop('outerBottom')}
                                 />
                             ))}
                     </>
@@ -294,11 +331,15 @@ function DualDragDrop({count, installStep, handleStepChange}) {
                                         <Fitting url={url} id={id} />
                                     ) : id === 'cpuTube' ? (
                                         <Tubing url={url} id={id} />
+                                    ) : id === 'gpuTube' ? (
+                                        <Tubing url={url} id={id} />
                                     ) : id === 'inner' ? (
                                         <Tubing url={url} id={id} />
                                     ) : id === 'outer' ? (
                                         <Tubing url={url} id={id} />
-                                    ) : id === 'distroTube' ? (
+                                    ) : id === 'innerBottom' ? (
+                                        <Tubing url={url} id={id} />
+                                    ) : id === 'outerBottom' ? (
                                         <Tubing url={url} id={id} />
                                     ) : id === 'coolant' ? (
                                         <img src={url} id={id} style={{ width: "100px", cursor: "pointer"}} onClick={handleCoolantClick} />
