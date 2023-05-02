@@ -217,7 +217,7 @@ function DualDragDrop({count, installStep, handleStepChange}) {
                                     key={target.id}
                                     currentStep={installStep}
                                     imageUrl={null}
-                                    style={{ bottom: target.bottom, left: target.left, zIndex: target.zIndex}}
+                                    style={{ bottom: target.bottom, left: target.left, zIndex: target.zIndex, transform: target.transform}}
                                     onPartDrop={(e) => handlePartDrop('gpuFittings')}
                                 />
                             ))}
